@@ -26,6 +26,7 @@ public class VrButton : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
+        Debug.Log("asd");
         if (other.tag == "hand") {
             down?.Invoke();
             if (_button && isChangeColor)

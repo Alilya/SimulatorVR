@@ -23,32 +23,32 @@ public class ButtonClick : MonoBehaviour {
 
     public Text textResult;
 
-    public void Start() {
-        Sintering model = new Sintering(
-                  t0: 20,
-                  tk: temp,
-                  l0: 1 * 0.000001,
-                  p0: 40,
-                  tau1: 70 * 60,
-                  d: 0.1 * 0.000000001,
-                  db0: 0.35,
-                  ds0: 0.4,
-                  eb: 171.5 * 1000,
-                  es: 245 * 1000,
-                  s: 3.5,
-                  eta0: 170 * 1000000,
-                  pg: press * 1000000,
-                  m: 0.1,
-                  ro0: 14600,
-                  tau2: time * 60);
+    //public void Start() {
+    //    Sintering model = new Sintering(
+    //              t0: 20,
+    //              tk: temp,
+    //              l0: 1 * 0.000001,
+    //              p0: 40,
+    //              tau1: 70 * 60,
+    //              d: 0.1 * 0.000000001,
+    //              db0: 0.35,
+    //              ds0: 0.4,
+    //              eb: 171.5 * 1000,
+    //              es: 245 * 1000,
+    //              s: 3.5,
+    //              eta0: 170 * 1000000,
+    //              pg: press * 1000000,
+    //              m: 0.1,
+    //              ro0: 14600,
+    //              tau2: time * 60);
 
 
-        var result = model.Calculate(true);
-        Debug.Log( "Конечный диаметр зерна,мкм = " + result.LL + '\n' +
-         "Конечная пористость,% = " + result.PP + '\n' +
-         "Конечная плотность,кг/м^3 = " + result.Ro);
+    //    var result = model.Calculate(true);
+    //    Debug.Log( "Конечный диаметр зерна,мкм = " + result.LL + '\n' +
+    //     "Конечная пористость,% = " + result.PP + '\n' +
+    //     "Конечная плотность,кг/м^3 = " + result.Ro);
 
-    }
+    //}
     public void ClickButtonCalc() {
         Sintering model = new Sintering(
                    t0: 20,
