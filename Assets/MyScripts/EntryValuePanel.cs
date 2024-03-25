@@ -19,6 +19,9 @@ public class EntryValuePanel : MonoBehaviour
 
     TMP_Text targetField;
 
+
+
+
     void Start() {
         for (int i = 0; i < valBtns.Length; ++i) {
             int elem = i;
