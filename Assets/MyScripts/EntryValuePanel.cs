@@ -19,53 +19,42 @@ public class EntryValuePanel : MonoBehaviour
 
     TMP_Text targetField;
 
-    void Start()
-    {
-        for (int i = 0; i < valBtns.Length; ++i)
-        {
+    void Start() {
+        for (int i = 0; i < valBtns.Length; ++i) {
             int elem = i;
-            valBtns[i].down.AddListener(() =>
-            {
+            valBtns[i].down.AddListener(() => {
                 string resStr = valText.text + elem.ToString();
-                if (inReg.IsMatch(resStr))
-                {
+                if (inReg.IsMatch(resStr)) {
                     valText.text = resStr;
-                }                
+                }
             });
         }
 
-        minusBtn.down.AddListener(() =>
-        {
-            if (valText.text.Length == 0)
-            {
+        minusBtn.down.AddListener(() => {
+            if (valText.text.Length == 0) {
                 valText.text = "-";
             }
         });
 
-        commaBtn.down.AddListener(() =>
-        {
+        commaBtn.down.AddListener(() => {
             string resStr = valText.text + ",";
-            if (inReg.IsMatch(resStr))
-            {
+            if (inReg.IsMatch(resStr)) {
                 valText.text = resStr;
             }
         });
 
-        delBtn.down.AddListener(() =>
-        {
-            if (valText.text.Length == 0) return;
+        delBtn.down.AddListener(() => {
+            if (valText.text.Length == 0)
+                return;
             valText.text = valText.text.Substring(0, valText.text.Length - 1);
         });
 
-        entrBtn.down.AddListener(() =>
-        {
+        entrBtn.down.AddListener(() => {
             if (valText.text.Length == 0 ||
-                (valText.text.Length == 1 && valText.text == "-"))
-            {
+                (valText.text.Length == 1 && valText.text == "-")) {
                 targetField.text = "0";
             }
-            else
-            {
+            else {
                 targetField.text = string.Format("{0:f}", double.Parse(valText.text));
             }
 
@@ -76,8 +65,7 @@ public class EntryValuePanel : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
-    public void Open(TMP_Text t)
-    {
+    public void Open(TMP_Text t) {
         targetField = t;
         valText.text = t.text;
         gameObject.SetActive(true);
