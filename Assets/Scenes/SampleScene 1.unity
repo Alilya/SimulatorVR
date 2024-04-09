@@ -1704,6 +1704,7 @@ GameObject:
   - component: {fileID: 340747240}
   - component: {fileID: 340747242}
   - component: {fileID: 340747244}
+  - component: {fileID: 340747245}
   m_Layer: 5
   m_Name: ButtonCalc
   m_TagString: Untagged
@@ -1832,6 +1833,19 @@ MonoBehaviour:
   timeValF: {fileID: 0}
   presValF: {fileID: 0}
   textResult: {fileID: 1406678378}
+--- !u!114 &340747245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340747237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7bc20ff89825de4bbe2fadaed07b0fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DebugText: {fileID: 1406678378}
 --- !u!1 &377394327
 GameObject:
   m_ObjectHideFlags: 0
@@ -5282,6 +5296,7 @@ GameObject:
   - component: {fileID: 1058608472}
   - component: {fileID: 1058608474}
   - component: {fileID: 1058608473}
+  - component: {fileID: 1058608475}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -5405,6 +5420,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1058608471}
   m_CullTransparentMesh: 1
+--- !u!114 &1058608475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1058608471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e38da3c0514b32d4aa1cce7967e9b018, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tempValStart: {fileID: 1058608473}
+  tempValEnd: {fileID: 997521015}
+  timeVal: {fileID: 645532207}
+  presVal: {fileID: 1334800487}
+  tempValF: {fileID: 0}
+  timeValF: {fileID: 0}
+  presValF: {fileID: 0}
+  textResult: {fileID: 0}
 --- !u!1 &1085345001
 GameObject:
   m_ObjectHideFlags: 0
@@ -5689,7 +5724,7 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5165620427658516344, guid: 4bcd869db9833df4b8a311de187ac97a, type: 3}
   m_PrefabInstance: {fileID: 1726532395}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1142755987
+--- !u!114 &1142755991
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5698,9 +5733,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1142755985}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c996b6902e9b65d44a41beeabe230453, type: 3}
+  m_Script: {fileID: 11500000, guid: a3609d471d7c3c7478a661c0b59138e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  graphName: "\u043A\u0435\u043A\u043D"
+  xName: "\u0430\u0432"
+  yName: "\u0430\u043F"
+  circleSprite: {fileID: 21300000, guid: e45f8f823c093d941855bb23b53b9414, type: 3}
 --- !u!1 &1150296526
 GameObject:
   m_ObjectHideFlags: 0
@@ -8030,7 +8069,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
-    m_Alignment: 3
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -8063,8 +8102,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -996, y: 721}
-  m_SizeDelta: {x: 500, y: 400}
+  m_AnchoredPosition: {x: -912, y: 704}
+  m_SizeDelta: {x: 444.9, y: 250.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1444703536
 GameObject:
@@ -9794,6 +9833,7 @@ GameObject:
   - component: {fileID: 1701532363}
   - component: {fileID: 1701532362}
   - component: {fileID: 1701532366}
+  - component: {fileID: 1701532367}
   m_Layer: 0
   m_Name: Planel
   m_TagString: Untagged
@@ -9909,6 +9949,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10, y: 2.26, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1701532367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701532361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b19f7e2134fc7824286066f44a7a5a5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DebugText: {fileID: 1406678378}
 --- !u!1001 &1726532395
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10040,7 +10093,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 719482598369325695, guid: 4bcd869db9833df4b8a311de187ac97a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1142755987}
+      addedObject: {fileID: 1142755991}
   m_SourcePrefab: {fileID: 100100000, guid: 4bcd869db9833df4b8a311de187ac97a, type: 3}
 --- !u!1 &1727167765
 GameObject:
@@ -13244,7 +13297,7 @@ SceneRoots:
   - {fileID: 1338574151}
   - {fileID: 1701532365}
   - {fileID: 1690631554}
+  - {fileID: 1972877597}
   - {fileID: 487708579}
   - {fileID: 1740195986}
   - {fileID: 1874991480}
-  - {fileID: 1972877597}
