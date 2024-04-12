@@ -1704,7 +1704,6 @@ GameObject:
   - component: {fileID: 340747240}
   - component: {fileID: 340747242}
   - component: {fileID: 340747244}
-  - component: {fileID: 340747245}
   m_Layer: 5
   m_Name: ButtonCalc
   m_TagString: Untagged
@@ -1833,19 +1832,6 @@ MonoBehaviour:
   timeValF: {fileID: 0}
   presValF: {fileID: 0}
   textResult: {fileID: 1406678378}
---- !u!114 &340747245
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 340747237}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7bc20ff89825de4bbe2fadaed07b0fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DebugText: {fileID: 1406678378}
 --- !u!1 &377394327
 GameObject:
   m_ObjectHideFlags: 0
@@ -9958,7 +9944,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1701532361}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b19f7e2134fc7824286066f44a7a5a5c, type: 3}
+  m_Script: {fileID: 11500000, guid: d7bc20ff89825de4bbe2fadaed07b0fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   DebugText: {fileID: 1406678378}

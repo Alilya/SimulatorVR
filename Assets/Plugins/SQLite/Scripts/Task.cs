@@ -1,4 +1,7 @@
-﻿namespace Entity.Models
+﻿using System.Collections.Generic;
+using System.ComponentModel;
+
+namespace Entity.Models
 {
     public class Tasks
     {
@@ -11,6 +14,13 @@
         public virtual Equipment OvenType { get; set; } = null!;
         public virtual Qualities Quality { get; set; } = null!;
         public virtual Material Material { get; set; } = null!;
-        public virtual Script Script { get; set; } = null!;
+        public virtual Scripts Script { get; set; } = null!;
+
+        public override string ToString() {
+            return string.Format("[Tasks: Id={0}, ScriptId={1},  QualityId={2}," +
+                " OvenTypeId={3},  MaterialId={4}, OvenType={5}," +
+               " Quality={6},Material={7},  Script={8}]",
+                Id, ScriptId, QualityId, OvenTypeId, MaterialId, OvenType, Quality, Material, Script);
+        }
     }
 }

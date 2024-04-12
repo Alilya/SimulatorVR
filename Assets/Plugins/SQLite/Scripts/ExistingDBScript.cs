@@ -1,40 +1,52 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using Entity.Models;
 
 public class ExistingDBScript : MonoBehaviour {
 
-	public Text DebugText;
+    public Text DebugText;
 
-	// Use this for initialization
-	void Start () {
-		var ds = new DataService ("existing.db");
-		ds.GetTasks();
-		ds.GetMaterial();
-		//ds.CreateDB ();
-		//var people = ds.GetPersons ();
-		ToConsole ("msuhv v1");
+    // Use this for initialization
+    void Start() {
+        var ds = new DataService("existing.db");
+        ds.GetTask();
+        ds.GetMMs();
 
-		//people = ds.GetPersonsNamedRoberto ();
-		//ToConsole("Searching for Roberto ...");
-		//ToConsole (people);
+       // var people = ds.GetUser();
+       // ToConsole(people);
 
-		//ds.CreatePerson ();
-		//ToConsole("New person has been created");
-		//var p = ds.GetJohnny ();
-		//ToConsole(p.ToString());
+        //people = ds.GetUserWhere();
+        //ToConsole("Searching for Roberto ...");
+       // ToConsole(people);
 
-	}
-	
-	//private void ToConsole(IEnumerable<Person> people){
-	//	foreach (var person in people) {
-	//		ToConsole(person.ToString());
-	//	}
-	//}
+        var task = ds.GetTask();
+       // ToConsole(task);
 
-	private void ToConsole(string msg){
-		DebugText.text += System.Environment.NewLine + msg;
-		Debug.Log (msg);
-	}
+        task = ds.GetTaskWhere();
+        ToConsole(task);
+
+        //ds.CreatePerson();
+        //ToConsole("New person has been created");
+        //var p = ds.GetJohnny();
+        //ToConsole(p.ToString());
+
+        //var p = ds.GetScript();
+        //var p1 = ds.GetScripts();
+        //  ToConsole(p);
+        //ToConsole(p.ToString());
+        //ToConsole(p1.ToString());
+    }
+
+    private void ToConsole(IEnumerable<Tasks> people) {
+        foreach (var person in people) {
+            ToConsole(person.ToString());
+        }
+    }
+
+    private void ToConsole(string msg) {
+        DebugText.text += System.Environment.NewLine + msg;
+        Debug.Log(msg);
+    }
 
 }

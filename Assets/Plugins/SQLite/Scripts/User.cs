@@ -4,7 +4,7 @@ using System.ComponentModel;
 
 namespace Entity.Models
 {
-    public class User
+    public class Users
     {
         public int Id { get; set; }
 
@@ -20,11 +20,16 @@ namespace Entity.Models
 
         [Description("Роль")]
         public virtual Role? Role { get; set; }
-        public virtual List<Script>? ScriptsTrainee { get; set; }
-        public virtual List<Script>? ScriptsInstructor { get; set; }
+        public virtual List<Scripts>? ScriptsTrainee { get; set; }
+        public virtual List<Scripts>? ScriptsInstructor { get; set; }
 
         //[NotMapped]
         [Description("Роль")]
         public string RoleAlias { get; set; } = null!;
+
+        public override string ToString() {
+            return string.Format("[Users: Id={0}, Login={1},  Password={2}, IsAdmin={3},  RoleId={4}]",
+                Id, Login, Password, IsAdmin, RoleId);
+        }
     }
 }

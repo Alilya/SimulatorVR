@@ -9,6 +9,6 @@ namespace Entity.Models
         public int Id { get; set; }
         public string Alias { get; set; } = null!;
 
-        public virtual List<User>? Users { get; set; }
+        public virtual List<Users>? Users { get; set; }
     }
 }
