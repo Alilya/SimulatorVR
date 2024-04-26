@@ -68,36 +68,20 @@ public class DataService {
 
     }
 
-    public void CreateDB() {
-        _connection.DropTable<Person>();
-        _connection.CreateTable<Person>();
-
-        _connection.InsertAll(new[]{
-            new Person{
+    public void InsertScriptDB() {
+        
+       _connection.Insert(new[]{
+            new Scripts{
                 Id = 1,
-                Name = "Tom",
-                Surname = "Perez",
-                Age = 56
+                Status = "Tom",
+                Protocol = "Perez",
+                TaskId = 56,
+                InstructorId= 1,
+               // TraineeId= 1,
             },
-            new Person{
-                Id = 2,
-                Name = "Fred",
-                Surname = "Arthurson",
-                Age = 16
-            },
-            new Person{
-                Id = 3,
-                Name = "John",
-                Surname = "Doe",
-                Age = 25
-            },
-            new Person{
-                Id = 4,
-                Name = "Roberto",
-                Surname = "Huertas",
-                Age = 37
-            }
         });
+
+
     }
 
     public IEnumerable<Users> GetUser() {
@@ -111,6 +95,9 @@ public class DataService {
     public IEnumerable<Tasks> GetTask() {
         return _connection.Table<Tasks>();
     }
+    public int InsertScript(Scripts scripts) {
+        return _connection.Insert(scripts);
+    }
 
     public IEnumerable<Tasks> GetTaskWhere() {
         return _connection.Table<Tasks>().Where(x => x.MaterialId == 2);
@@ -119,6 +106,7 @@ public class DataService {
     public MMs GetMMs() {
         return _connection.Table<MMs>().Where(x => x.Id == 1).FirstOrDefault();
     }
+    
     public IEnumerable<Scripts> GetScript() {
         return _connection.Table<Scripts>();
     }

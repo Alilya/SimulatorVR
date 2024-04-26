@@ -9,9 +9,21 @@ public class ExistingDBScript : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
+        Scripts scripts = new Scripts();
+
+        scripts.Id = 3;
+        scripts.Status = "Tom";
+        scripts.Protocol = "Perez";
+        scripts.TaskId = 1;
+        scripts.InstructorId = 1;
+        scripts.TraineeId = 1;
+
         var ds = new DataService("existing.db");
-        ds.GetTask();
-        ds.GetMMs();
+        //ds.GetTask();
+        //ds.GetMMs();
+        ds.InsertScript(scripts);
+        var scrip = ds.GetScript();
+        ToConsole(scrip);
 
        // var people = ds.GetUser();
        // ToConsole(people);
@@ -20,11 +32,11 @@ public class ExistingDBScript : MonoBehaviour {
         //ToConsole("Searching for Roberto ...");
        // ToConsole(people);
 
-        var task = ds.GetTask();
+       // var task = ds.GetTask();
        // ToConsole(task);
 
-        task = ds.GetTaskWhere();
-        ToConsole(task);
+       // task = ds.GetTaskWhere();
+        //ToConsole(task);
 
         //ds.CreatePerson();
         //ToConsole("New person has been created");
@@ -38,7 +50,7 @@ public class ExistingDBScript : MonoBehaviour {
         //ToConsole(p1.ToString());
     }
 
-    private void ToConsole(IEnumerable<Tasks> people) {
+    private void ToConsole(IEnumerable<Scripts> people) {
         foreach (var person in people) {
             ToConsole(person.ToString());
         }
