@@ -1,6 +1,8 @@
+using System;
 using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
+
 
 public class EntryValuePanel : MonoBehaviour {
     public delegate void ChangeVal(TMP_Text message);
@@ -17,7 +19,7 @@ public class EntryValuePanel : MonoBehaviour {
     [SerializeField] TMP_Text valText;
 
     TMP_Text targetField;
-
+    VrButton btn = new VrButton();
     void Start() {
         for (int i = 0; i < valBtns.Length; ++i) {
             int elem = i;
@@ -25,6 +27,7 @@ public class EntryValuePanel : MonoBehaviour {
                 string resStr = valText.text + elem.ToString();
                 if (inReg.IsMatch(resStr)) {
                     valText.text = resStr;
+               
                 }
             });
         }
@@ -55,6 +58,8 @@ public class EntryValuePanel : MonoBehaviour {
             }
             else {
                 targetField.text = string.Format("{0:f}", double.Parse(valText.text));
+
+                btn.printTxt('\n'+valText.text + '\n', DateTime.Now);
             }
 
             OnChangeVal?.Invoke(targetField);

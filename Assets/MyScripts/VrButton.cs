@@ -36,6 +36,12 @@ public class VrButton : MonoBehaviour {
         //Console.WriteLine(materials);
         //string path = "C:\\Users\\Alina\\OneDrive\\Рабочий стол\\СПБГТИ(ТУ)\\Diplom\\СПЕКАНИЕ\\SinteringSimulatorDiplomProject\\Assets\\StreamingAssets\\mainV1.db";
         //SQLiteConnection conn = new SQLiteConnection(path);
+        //полная перезапись файла
+        //string path = "logsRes.txt";
+       // StreamWriter writer = new StreamWriter(path, true);
+
+       // writer.WriteLineAsync("Addition");
+        //writer.WriteAsync(text + " " + time);
     }
 
     public void ClickButtonCalc() {
@@ -58,11 +64,13 @@ public class VrButton : MonoBehaviour {
                    tau2: 60 * 60);
 
         var result = model.Calculate(true);
-        string txt= "Конечный диаметр зерна,мкм = " + result.LL + '\n' +
-         "Конечная пористость,% = " + result.PP + '\n' +
-         "Конечная плотность,кг/м^3 = " + result.Ro + "   " + tempValStart.text + "   " + tempValEnd.text + "   " + timeVal.text + "   " + presVal.text;
+        //string txt= "Конечный диаметр зерна,мкм = " + result.LL + '\n' +
+        // "Конечная пористость,% = " + result.PP + '\n' +
+        // "Конечная плотность,кг/м^3 = " + result.Ro + "   " + tempValStart.text + "   " + tempValEnd.text + "   " + timeVal.text + "   " + presVal.text;
 
-
+        string txt = result.LL + '\n' + result.PP + '\n' + result.Ro +
+            '\n' + tempValStart.text + '\n'
+            + tempValEnd.text + '\n' + timeVal.text + '\n' + presVal.text;
 
         printTxt(txt, DateTime.Now);
        
@@ -78,7 +86,8 @@ public class VrButton : MonoBehaviour {
 
     
     public async void printTxt(string text, DateTime time) {
-        string path = "note1.txt";
+        string path = "logsRes.txt";
+        Debug.Log(text);
         // полная перезапись файла 
         //StreamWriter writer = new StreamWriter(path, true);
 

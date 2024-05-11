@@ -9,21 +9,21 @@ public class ExistingDBScript : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
-        Scripts scripts = new Scripts();
+        //Scripts scripts = new Scripts();
 
-        scripts.Id = 3;
-        scripts.Status = "Tom";
-        scripts.Protocol = "Perez";
-        scripts.TaskId = 1;
-        scripts.InstructorId = 1;
-        scripts.TraineeId = 1;
+        //scripts.Id = 3;
+        //scripts.Status = "Tom";
+        //scripts.Protocol = "Perez";
+        //scripts.TaskId = 1;
+        //scripts.InstructorId = 1;
+        //scripts.TraineeId = 1;
 
-        var ds = new DataService("existing.db");
+       // var ds = new DataService("existing.db");
         //ds.GetTask();
         //ds.GetMMs();
-        ds.InsertScript(scripts);
-        var scrip = ds.GetScript();
-        ToConsole(scrip);
+       // ds.InsertScript(scripts);
+       // var scrip = ds.GetScript();
+       // ToConsole(scrip);
 
        // var people = ds.GetUser();
        // ToConsole(people);
