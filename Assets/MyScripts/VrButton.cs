@@ -46,8 +46,8 @@ public class VrButton : MonoBehaviour {
 
     public void ClickButtonCalc() {
         Sintering model = new Sintering(
-                   t0: 20,//Convert.ToDouble(tempValStart.text),//20
-                   tk: 40,//Convert.ToDouble(tempValEnd.text),//temp
+                   t0: Convert.ToDouble(tempValStart.text),//20
+                   tk: Convert.ToDouble(tempValEnd.text),//temp
                    l0: 1 * 0.000001,
                    p0: 40,
                    tau1: Convert.ToDouble(timeVal.text),//70*60
@@ -58,7 +58,7 @@ public class VrButton : MonoBehaviour {
                    es: 245 * 1000,
                    s: 3.5,
                    eta0: 170 * 1000000,
-                   pg: 40,//Convert.ToDouble(presVal.text),//press * 1000000
+                   pg: Convert.ToDouble(presVal.text),//press * 1000000
                    m: 0.1,
                    ro0: 14600,
                    tau2: 60 * 60);
@@ -68,9 +68,9 @@ public class VrButton : MonoBehaviour {
         // "Конечная пористость,% = " + result.PP + '\n' +
         // "Конечная плотность,кг/м^3 = " + result.Ro + "   " + tempValStart.text + "   " + tempValEnd.text + "   " + timeVal.text + "   " + presVal.text;
 
-        string txt = result.LL + '\n' + result.PP + '\n' + result.Ro +
-            '\n' + tempValStart.text + '\n'
-            + tempValEnd.text + '\n' + timeVal.text + '\n' + presVal.text;
+        string txt = result.LL + "-ll \n" + result.PP + "- PP \n" + result.Ro +
+            "-Ro \n" + tempValStart.text + " -tempStart\n"
+            + tempValEnd.text + " -tempEnd\n" + timeVal.text + " -time\n" + presVal.text+" -press";
 
         printTxt(txt, DateTime.Now);
        
@@ -95,7 +95,7 @@ public class VrButton : MonoBehaviour {
         //writer.WriteAsync(text+ " "+time);
 
         using (StreamWriter writer = new StreamWriter(path, true)) {
-            await writer.WriteAsync(text + " " + time);
+            await writer.WriteAsync(text + " // " + time);
         }
     }
 

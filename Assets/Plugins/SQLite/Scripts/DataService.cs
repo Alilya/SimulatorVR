@@ -17,7 +17,7 @@ public class DataService {
     public DataService(string DatabaseName) {
 
 #if UNITY_EDITOR
-        var dbPath = string.Format(@"Assets/StreamingAssets/{0}", DatabaseName);
+        var dbPath = string.Format(@"C:/Users/Alina/Desktop/СПБГТИ(ТУ)/Diplom/СПЕКАНИЕ/Проект Шишко Колесникова/Sintering/Sintering of ceramics/bin/Debug/net6.0-windows/{0}", DatabaseName);
 #else
         // check if file exists in Application.persistentDataPath
         var filepath = string.Format("{0}/{1}", Application.persistentDataPath, DatabaseName);
@@ -69,8 +69,8 @@ public class DataService {
     }
 
     public void InsertScriptDB() {
-        
-       _connection.Insert(new[]{
+
+        _connection.Insert(new[]{
             new Scripts{
                 Id = 1,
                 Status = "Tom",
@@ -92,8 +92,45 @@ public class DataService {
         return _connection.Table<Users>().Where(x => x.Id == 1);
     }
 
-    public IEnumerable<Tasks> GetTask() {
-        return _connection.Table<Tasks>();
+    //public IEnumerable<Tasks> GetTask() {
+    //    //Tasks tasks = new Tasks();
+    //    // Qualities qualities = new Qualities();
+    //    var qu = _connection.Table<Qualities>();
+    //    var ts = _connection.Table<Tasks>();
+    //    var oven = _connection.Table<Equipments>();
+    //    var mater = _connection.Table<Materials>();
+
+    //    if (ts.First().Id == qu.First().Id) {
+    //        Debug.Log(qu.First().Alias + " название");
+    //    }
+    //    if (ts.First().Id == oven.First().Id) {
+    //        Debug.Log(oven.First().Manufacturer + " тип печи");
+    //    }
+    //    if (ts.First().Id == mater.First().Id) {
+    //        Debug.Log(mater.First().Name + " материал");
+    //    }
+    //    Debug.Log(ts.First().Reference + " эталон");
+
+    //    return _connection.Table<Tasks>();
+    //}
+    public List<string> GetTask() {
+        var qu = _connection.Table<Qualities>();
+        var ts = _connection.Table<Tasks>();
+        var oven = _connection.Table<Equipments>();
+        var mater = _connection.Table<Materials>();
+        List<string> list = new List<string>();
+        if (ts.First().Id == qu.First().Id) {
+            list.Add("Показатель качества: " + qu.First().Alias + System.Environment.NewLine);
+        }
+        if (ts.First().Id == oven.First().Id) {
+            list.Add("Тип печи: " + oven.First().Manufacturer + System.Environment.NewLine);
+        }
+        if (ts.First().Id == mater.First().Id) {
+            list.Add("Материал: " + mater.First().Name + System.Environment.NewLine);
+        }
+        list.Add("Требуемое значение: " + ts.First().Reference + System.Environment.NewLine);
+
+        return list;
     }
     public int InsertScript(Scripts scripts) {
         return _connection.Insert(scripts);
@@ -102,11 +139,11 @@ public class DataService {
     public IEnumerable<Tasks> GetTaskWhere() {
         return _connection.Table<Tasks>().Where(x => x.MaterialId == 2);
     }
- 
+
     public MMs GetMMs() {
         return _connection.Table<MMs>().Where(x => x.Id == 1).FirstOrDefault();
     }
-    
+
     public IEnumerable<Scripts> GetScript() {
         return _connection.Table<Scripts>();
     }

@@ -30,9 +30,9 @@
         /// </summary>
         public int QualityId { get; set; }
 
-        public virtual Equipment Equipment { get; set; } = null!;
+        public virtual Equipments Equipment { get; set; } = null!;
         public virtual MMs MM { get; set; } = null!;
-        public virtual Material Material { get; set; } = null!;
+        public virtual Materials Material { get; set; } = null!;
         public virtual Qualities Qualities { get; set; } = null!;
     }
 }

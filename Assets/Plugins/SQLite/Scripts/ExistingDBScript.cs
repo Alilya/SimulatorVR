@@ -18,10 +18,10 @@ public class ExistingDBScript : MonoBehaviour {
         //scripts.InstructorId = 1;
         //scripts.TraineeId = 1;
 
-       // var ds = new DataService("existing.db");
+        var ds = new DataService("mainV2.db");
         //ds.GetTask();
-        //ds.GetMMs();
-       // ds.InsertScript(scripts);
+       // ds.GetMMs();
+        //ds.InsertScript(scripts);
        // var scrip = ds.GetScript();
        // ToConsole(scrip);
 
@@ -32,10 +32,14 @@ public class ExistingDBScript : MonoBehaviour {
         //ToConsole("Searching for Roberto ...");
        // ToConsole(people);
 
-       // var task = ds.GetTask();
-       // ToConsole(task);
+        var task = ds.GetTask();
+        foreach(var ts in task) {
+            DebugText.text += ts;
+        }
+        
+        //ToConsole(task);
 
-       // task = ds.GetTaskWhere();
+        // task = ds.GetTaskWhere();
         //ToConsole(task);
 
         //ds.CreatePerson();
@@ -50,7 +54,7 @@ public class ExistingDBScript : MonoBehaviour {
         //ToConsole(p1.ToString());
     }
 
-    private void ToConsole(IEnumerable<Scripts> people) {
+    private void ToConsole(IEnumerable<Tasks> people) {
         foreach (var person in people) {
             ToConsole(person.ToString());
         }

@@ -55,6 +55,6 @@
         /// </summary>
         public int EquipmentId { get; set; }
 
-        public virtual Equipment Equipment { get; set; } = null!;
+        public virtual Equipments Equipment { get; set; } = null!;
     }
 }

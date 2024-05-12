@@ -5,7 +5,7 @@ namespace Entity.Models
     /// <summary>
     /// Справочник оборудования
     /// </summary>
-    public class Equipment
+    public class Equipments
     {
         /// <summary>
         /// Код типа печи

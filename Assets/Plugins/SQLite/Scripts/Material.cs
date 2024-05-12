@@ -8,7 +8,7 @@ namespace Entity.Models
     /// <summary>
     /// Справочник материалов
     /// </summary>
-    public class Material
+    public class Materials
     {
         /// <summary>
         /// Код типа материала

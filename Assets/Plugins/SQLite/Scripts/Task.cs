@@ -10,10 +10,11 @@ namespace Entity.Models
         public int QualityId { get; set; }
         public int OvenTypeId { get; set; }
         public int MaterialId { get; set; }
+        public string Reference { get; set; } = null!;
 
-        public virtual Equipment OvenType { get; set; } = null!;
+        public virtual Equipments OvenType { get; set; } = null!;
         public virtual Qualities Quality { get; set; } = null!;
-        public virtual Material Material { get; set; } = null!;
+        public virtual Materials Material { get; set; } = null!;
         public virtual Scripts Script { get; set; } = null!;
 
         public override string ToString() {

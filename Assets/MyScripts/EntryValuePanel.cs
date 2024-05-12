@@ -59,7 +59,7 @@ public class EntryValuePanel : MonoBehaviour {
             else {
                 targetField.text = string.Format("{0:f}", double.Parse(valText.text));
 
-                btn.printTxt('\n'+valText.text + '\n', DateTime.Now);
+                btn.printTxt("измененное занчение - \n"+valText.text + "\n время", DateTime.Now);
             }
 
             OnChangeVal?.Invoke(targetField);

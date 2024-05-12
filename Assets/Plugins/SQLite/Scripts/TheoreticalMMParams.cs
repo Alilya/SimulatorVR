@@ -24,6 +24,6 @@ namespace Entity.Models
         [Description("Материалы")]
         public int MaterialId { get; set; }
 
-        public virtual Material Material { get; set; } = null!;
+        public virtual Materials Material { get; set; } = null!;
     }
 }
