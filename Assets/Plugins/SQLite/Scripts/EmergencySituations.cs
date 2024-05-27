@@ -2,7 +2,7 @@
 
 namespace Entity.Models
 {
-    public class EmergencySituation
+    public class EmergencySituations
     {
         public int Id { get; set; }
         public string Reason { get; set; } = null!;

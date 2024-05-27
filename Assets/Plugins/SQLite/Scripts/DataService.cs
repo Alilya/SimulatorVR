@@ -17,7 +17,7 @@ public class DataService {
     public DataService(string DatabaseName) {
 
 #if UNITY_EDITOR
-        var dbPath = string.Format(@"C:/Users/Alina/Desktop/СПБГТИ(ТУ)/Diplom/СПЕКАНИЕ/Проект Шишко Колесникова/Sintering/Sintering of ceramics/bin/Debug/net6.0-windows/{0}", DatabaseName);
+        var dbPath = string.Format(@"C:\Users\Alina\Downloads\Sintering-of-ceramics-ui\Sintering-of-ceramics-ui\Sintering of ceramics\bin\Debug\net6.0-windows\{0}", DatabaseName);
 #else
         // check if file exists in Application.persistentDataPath
         var filepath = string.Format("{0}/{1}", Application.persistentDataPath, DatabaseName);
