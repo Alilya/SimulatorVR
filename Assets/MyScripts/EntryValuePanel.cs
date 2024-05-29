@@ -32,14 +32,16 @@ public class EntryValuePanel : MonoBehaviour {
 
 
     void Start() {
-        
+        ClickButtonCalc();
         for (int i = 0; i < valBtns.Length; ++i) {
             int elem = i;
             valBtns[i].down.AddListener(() => {
+               
                 string resStr = valText.text + elem.ToString();
                 if (inReg.IsMatch(resStr)) {
                     valText.text = resStr;
-               
+                    
+                  
                 }
             });
         }
@@ -72,12 +74,28 @@ public class EntryValuePanel : MonoBehaviour {
                 targetField.text = string.Format("{0:f}", double.Parse(valText.text));
 
             }
-
+            ClickButtonCalc();
+            switch (targetField.tag) {
+                case "startTemp":
+                    printTxt("==Начальная температура, 0С  " + DateTime.Now +"   "+ valText.text  + Environment.NewLine);
+                    break;
+                case "endTemp":
+                    printTxt("==Конечная температура, 0С  " + DateTime.Now + "   " + valText.text + Environment.NewLine);
+                    break;
+                case "time":
+                    printTxt("==Время спекания, мин  " + DateTime.Now + "   " + valText.text  + Environment.NewLine);
+                    break;
+                case "press":
+                    printTxt("==Давление газа, атм  " + DateTime.Now + "   " + valText.text  + Environment.NewLine);
+                    break;
+            }
+          
             OnChangeVal?.Invoke(targetField);
             gameObject.SetActive(false);
-            ClickButtonCalc();
+            
         });
 
+       
         this.gameObject.SetActive(false);
       
       
@@ -103,15 +121,15 @@ public class EntryValuePanel : MonoBehaviour {
                    tau2: 60 * 60);
 
         var result = model.Calculate(true);
-        string txt = "1-Конечный диаметр зерна,мкм  " + result.LL + "  " + DateTime.Now + Environment.NewLine +
-         "Конечная пористость,%  " + result.PP + "  " + DateTime.Now + Environment.NewLine +
-         "Конечная плотность,кг/м^3  " + result.Ro + "  " + DateTime.Now + Environment.NewLine
-         + "1-Начальная температура,0С  " + startTemp.text + "  " + DateTime.Now + Environment.NewLine
-         + "Конечная температура,0С  " + endTemp.text + "  " + DateTime.Now + Environment.NewLine
-         + "Время спекания,мин  " + time.text + "  " + DateTime.Now + Environment.NewLine
-         + "Давление,атм  " + press.text + "  " + DateTime.Now;
+        string txt = "--Конечный диаметр зерна,мкм  " + DateTime.Now + "  " + result.LL + Environment.NewLine +
+         "--Конечная пористость,%  " + DateTime.Now + "  " + result.PP + Environment.NewLine +
+         "--Конечная плотность,кг/м^3  " + DateTime.Now + "  " + result.Ro  + Environment.NewLine
+        +"Начальная температура,0С  " + DateTime.Now + "  " + startTemp.text + Environment.NewLine
+        + "Конечная температура,0С  " + DateTime.Now + "  " + endTemp.text + Environment.NewLine
+        + "Время спекания,мин  " + DateTime.Now + "  " + time.text + Environment.NewLine
+        + "Давление,атм  " + DateTime.Now + "  " + press.text ;
 
-         printTxt(txt + Environment.NewLine);
+        printTxt(txt + Environment.NewLine);
 
         textResult.text = "Конечный диаметр зерна,мкм = " + Math.Round(result.LL, 5) + '\n' +
          "Конечная пористость,% = " + Math.Round(result.PP, 5) + '\n' +
@@ -121,7 +139,7 @@ public class EntryValuePanel : MonoBehaviour {
 
 
     public async void printTxt(string text) {
-        string path = "C:/Users/Alina/Downloads/Sintering-of-ceramics-ui/Sintering-of-ceramics-ui/Sintering of ceramics/bin/Debug/net6.0-windows/logsRes.txt";
+        string path = "C:/Users/Alina/Desktop/СПБГТИ(ТУ)/Diplom/СПЕКАНИЕ/Проект Шишко Колесникова/Sintering-of-ceramics/Sintering of ceramics/bin/Debug/net6.0-windows/logsRes.txt";
         Debug.Log(text);
         // полная перезапись файла 
         //StreamWriter writer = new StreamWriter(path, true);
@@ -136,6 +154,7 @@ public class EntryValuePanel : MonoBehaviour {
     public void Open(TMP_Text t) {
         targetField = t;
         valText.text = t.text;
+        var s = t.tag;
         gameObject.SetActive(true);
     }
 }

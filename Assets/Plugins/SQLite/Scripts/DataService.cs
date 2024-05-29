@@ -2,6 +2,8 @@
 using UnityEngine;
 using Entity.Models;
 using System.Linq;
+using UnityEngine.Windows;
+
 
 
 #if !UNITY_EDITOR
@@ -17,7 +19,7 @@ public class DataService {
     public DataService(string DatabaseName) {
 
 #if UNITY_EDITOR
-        var dbPath = string.Format(@"C:\Users\Alina\Downloads\Sintering-of-ceramics-ui\Sintering-of-ceramics-ui\Sintering of ceramics\bin\Debug\net6.0-windows\{0}", DatabaseName);
+        var dbPath = string.Format(@"C:\Users\Alina\Desktop\СПБГТИ(ТУ)\Diplom\СПЕКАНИЕ\Проект Шишко Колесникова\Sintering-of-ceramics\Sintering of ceramics\bin\Debug\net6.0-windows\{0}", DatabaseName);
 #else
         // check if file exists in Application.persistentDataPath
         var filepath = string.Format("{0}/{1}", Application.persistentDataPath, DatabaseName);
@@ -128,7 +130,7 @@ public class DataService {
         if (ts.First().Id == mater.First().Id) {
             list.Add("Материал: " + mater.First().Name + System.Environment.NewLine);
         }
-        list.Add("Требуемое значение: " + ts.First().Reference + System.Environment.NewLine);
+        list.Add("Требуемое значение: " + ts.First().Id + System.Environment.NewLine);
 
         return list;
     }

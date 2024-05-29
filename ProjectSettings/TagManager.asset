@@ -6,6 +6,10 @@ TagManager:
   tags:
   - hand
   - EntryValuePanel
+  - startTemp
+  - endTemp
+  - time
+  - press
   layers:
   - Default
   - TransparentFX
