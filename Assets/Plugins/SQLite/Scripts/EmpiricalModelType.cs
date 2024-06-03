@@ -8,6 +8,6 @@ namespace Entity.Models
         public string Alias { get; set; } = null!;
         public string UnitAlias { get; set; } = null!;
 
-        public virtual List<EmpiricalModel>? EmpiricalModels { get; set;}
+        public virtual List<EmpiricalModels>? EmpiricalModels { get; set;}
     }
 }

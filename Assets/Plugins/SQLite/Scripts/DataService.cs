@@ -3,6 +3,10 @@ using UnityEngine;
 using Entity.Models;
 using System.Linq;
 using UnityEngine.Windows;
+using static UnityEngine.Rendering.DebugUI;
+
+using System;
+
 
 
 
@@ -19,7 +23,7 @@ public class DataService {
     public DataService(string DatabaseName) {
 
 #if UNITY_EDITOR
-        var dbPath = string.Format(@"C:\Users\Alina\Desktop\СПБГТИ(ТУ)\Diplom\СПЕКАНИЕ\Проект Шишко Колесникова\Sintering-of-ceramics\Sintering of ceramics\bin\Debug\net6.0-windows\{0}", DatabaseName);
+        var dbPath = string.Format(@"C:\Users\Alina\OneDrive\Рабочий стол\СПБГТИ(ТУ)\Diplom\СПЕКАНИЕ\SinteringSimulatorDiplomProject\Assets\Streaming Assets\{0}", DatabaseName);
 #else
         // check if file exists in Application.persistentDataPath
         var filepath = string.Format("{0}/{1}", Application.persistentDataPath, DatabaseName);
@@ -116,23 +120,33 @@ public class DataService {
     //    return _connection.Table<Tasks>();
     //}
     public List<string> GetTask() {
-        var qu = _connection.Table<Qualities>();
-        var ts = _connection.Table<Tasks>();
-        var oven = _connection.Table<Equipments>();
-        var mater = _connection.Table<Materials>();
-        List<string> list = new List<string>();
-        if (ts.First().Id == qu.First().Id) {
-            list.Add("Показатель качества: " + qu.First().Alias + System.Environment.NewLine);
-        }
-        if (ts.First().Id == oven.First().Id) {
-            list.Add("Тип печи: " + oven.First().Manufacturer + System.Environment.NewLine);
-        }
-        if (ts.First().Id == mater.First().Id) {
-            list.Add("Материал: " + mater.First().Name + System.Environment.NewLine);
-        }
-        list.Add("Требуемое значение: " + ts.First().Id + System.Environment.NewLine);
 
+        var lines = System.IO.File.ReadAllLines(@"C:/Users/Alina/Desktop/СПБГТИ(ТУ)/Diplom/СПЕКАНИЕ/Проект Шишко Колесникова/Sintering-of-ceramics/Sintering of ceramics/bin/Debug/net6.0-windows/script.txt");
+        var data = new List<List<string>>();
+            
+        foreach (var line in lines) {
+            var split = line.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+            data.Add(split.ToList());
+        }
+
+        data.ToArray();
+        List<string> list = new List<string>();
+
+        list.Add( data[0][0] + System.Environment.NewLine);
+        list.Add( data[1][0] + System.Environment.NewLine);
+        list.Add( data[2][0] + System.Environment.NewLine);
+        list.Add( data[3][0] + System.Environment.NewLine);
         return list;
+    }
+    public IEnumerable<EmpiricalModels> GetEmpiricalModels() {
+        return _connection.Table<EmpiricalModels>();
+
+    }
+    public IEnumerable<ParamRange> GetParamRange() {
+        return _connection.Table<ParamRange>();
+    }
+    public IEnumerable<EmpiricalModelCoeffs> GetEmpiricalModelCoeff() {
+        return _connection.Table <EmpiricalModelCoeffs> ();
     }
     public int InsertScript(Scripts scripts) {
         return _connection.Insert(scripts);

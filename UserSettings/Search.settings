@@ -8,7 +8,7 @@ onBoardingDoNotAskAgain = true
 showPackageIndexes = false
 showStatusBar = false
 scopes = {
-	"last_search.FD7A1EDD" = "ref=\"Assets/Texture/Materials/Materials/dc85afc03d1aa20906146d2b6a4f7b48.png\""
+	"last_search.FD7A1EDD" = "ref=\"Assets/MyScripts/EntryValuePanel.cs\""
 	"OpenInspectorPreview.FD7A1EDD" = "0"
 	"currentGroup.FD7A1EDD" = "all"
 }

@@ -17,7 +17,7 @@ namespace Entity.Models
         public virtual Equipments OvenType { get; set; } = null!;
         public virtual Materials Material { get; set; } = null!;
         public virtual Scripts Script { get; set; } = null!;
-        public virtual List<ReferenceValues>? ReferenceValues { get; set; }
+      //  public virtual List<ReferenceValues>? ReferenceValues { get; set; }
         public virtual EmergencySituations? EmergencySituation { get; set; }
         public virtual Qualities Quality { get; set; } = null!;
         public override string ToString() {

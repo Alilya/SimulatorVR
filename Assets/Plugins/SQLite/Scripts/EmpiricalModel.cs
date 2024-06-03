@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Entity.Models
 {
-    public partial class EmpiricalModel
+    public partial class EmpiricalModels
     {
         public int Id { get; set; }
         public int TypeId { get; set; }
@@ -14,7 +14,7 @@ namespace Entity.Models
 
         public virtual Materials Material { get; set; } = null!;
         public virtual Equipments Equipment { get; set; } = null!;
-        public virtual List<EmpiricalModelCoeff> EmpiricalModelCoeffs { get; set; } = null!; 
+        public virtual List<EmpiricalModelCoeffs> EmpiricalModelCoeffs { get; set; } = null!; 
         public virtual List<ParamRange> ParamsRanges { get; set; } = null!;
         public virtual EmpiricalModelType Type { get; set; } = null!;
 

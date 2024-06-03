@@ -39,6 +39,6 @@ namespace Entity.Models
 
         public virtual Regime Regime { get; set; } = null!;
         public virtual List<Model> Models { get; set; } = null!;
-        public virtual List<EmpiricalModel>? EmpiricalModels { get; set;}
+        public virtual List<EmpiricalModels>? EmpiricalModels { get; set;}
     }
 }

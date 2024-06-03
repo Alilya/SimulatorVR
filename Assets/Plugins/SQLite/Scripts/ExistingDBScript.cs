@@ -21,7 +21,6 @@ public class ExistingDBScript : MonoBehaviour {
 
         var ds = new DataService("mainV2.db");
 
-        printTxt();
         //ds.GetTask();
         // ds.GetMMs();
         //ds.InsertScript(scripts);

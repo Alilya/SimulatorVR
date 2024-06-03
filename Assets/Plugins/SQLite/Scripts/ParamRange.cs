@@ -11,7 +11,7 @@ namespace Entity.Models
         public double MinValue { get; set; }
         public double Step { get; set; }
 
-        public virtual EmpiricalModel? Model { get; set; }
+        public virtual EmpiricalModels? Model { get; set; }
         public virtual ParamRangeUnit Unit { get; set; } = null!;
 
         #region NotMapped
