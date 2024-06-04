@@ -10,6 +10,8 @@ public class Parser : MonoBehaviour
     private const string RegexMulOp = "[\\*\\/^%]";                             // Первоприоритетные числа
     private const string RegexAddOp = "[\\+\\-]";                               // Второприоритетные числа
     public static double Parse(string str) {
+        Debug.Log(str + "    ---STR");
+
         // Парсинг скобок
         var matchSk = Regex.Match(str, RegexBr);
         if (matchSk.Groups.Count > 1) {

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Globalization;
 using System.Collections.Generic;
 using System.Text;
+using System.Data;
 
 public class EntryValuePanel : MonoBehaviour {
 
@@ -156,30 +157,30 @@ public class EntryValuePanel : MonoBehaviour {
             } 
         }
         empiricModels.ToArray();
-        var expression = "";
-        var result = "";
-        for (int i=0; i<empiricModels.Count;i++) {
-            result = empiricModels[i][0];
-            while (empiricModels[i][0].Contains("Pg")) {
-                expression=empiricModels[i][0].Replace("Pg", press.text.ToString());
-                
+        string expression = "";
+        double result;
+        for (int i = 0; i < empiricModels.Count; i++) {
+            expression= empiricModels[i][0].ToString();
+            if (expression.Contains("Pg") || expression.Contains("T") || expression.Contains("tao")) {
+                expression = expression.Replace("Pg", press.text.ToString());
+                expression = expression.Replace("T", startTemp.text.ToString());
+                expression = expression.Replace("tao", time.text.ToString());
+                expression = expression.Replace(",", ".");
+                expression = expression.Replace("+-", "-");
+                result = Evaluate(expression);
+                Debug.Log(expression + "  -- RESULT");
             }
-            while (empiricModels[i][0].Contains("T")) {
-                expression=empiricModels[i][0].Replace("T", startTemp.text.ToString());
-            }
-            while (empiricModels[i][0].Contains("tao")) {
-                expression=empiricModels[i][0].Replace("tao", time.text.ToString());
-            }
-            result = expression;
-            expression = empiricModels[i][0].ToString();
-           // result = Parser.Parse(expression);
-            Debug.Log(expression + "  RESULT MODEL CALC");
+           
         }
-        //result=Parser.Parse(expression);
-        //Debug.Log(result+"  RESULT MODEL CALC");
+    }
+    static double Evaluate(string expression) {
+        var loDataTable = new DataTable();
+        var loDataColumn = new DataColumn("Eval", typeof(double), expression);
+        loDataTable.Columns.Add(loDataColumn);
+        loDataTable.Rows.Add(0);
+        return (double)(loDataTable.Rows[0]["Eval"]);
     }
 
-   
     public async void printTxt(string text) {
          //string logPath = "C:/Users/Alina/Desktop/ÑÏÁÃÒÈ(ÒÓ)/Diplom/ÑÏÅÊÀÍÈÅ/Ïðîåêò Øèøêî Êîëåñíèêîâà/Sintering-of-ceramics/Sintering of ceramics/bin/Debug/net6.0-windows/logsRes.txt";
         string logPath = System.IO.Directory.GetCurrentDirectory()+ "/logsRes.txt";
