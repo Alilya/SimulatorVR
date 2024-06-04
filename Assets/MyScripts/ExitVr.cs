@@ -9,17 +9,10 @@ public class ExitVr : MonoBehaviour
         if (Input.GetKey(KeyCode.Escape)){
             Application.Quit(); 
         }
-        if (Input.GetKey("escape"))  // если нажата клавиша Esc (Escape)
-      {
-            Application.Quit();    // закрыть приложение
-        }
+        
     }
     public void Exit() {
-
-       // if (Input.GetKey(KeyCode.Escape)) {
-            Application.Quit();
-        //}
-
+          Application.Quit();
     }
 }
 

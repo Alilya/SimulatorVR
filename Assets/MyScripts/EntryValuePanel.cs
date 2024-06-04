@@ -36,6 +36,12 @@ public class EntryValuePanel : MonoBehaviour {
 
     void Start() {
         ClickButtonCalc();
+        DataService ds = new DataService("mainV2.db") { };
+        List<string> task = ds.GetTask();
+        for(int i=0; i< task.Count; i++) {
+            printTxt(task[i]);
+        }
+        
         for (int i = 0; i < valBtns.Length; ++i) {
             int elem = i;
             valBtns[i].down.AddListener(() => {
@@ -75,7 +81,7 @@ public class EntryValuePanel : MonoBehaviour {
 
             }
             ClickButtonCalc();
-           // CalculateImpericalModels(startTemp, time, press);
+            CalculateImpericalModels(startTemp, time, press);
             switch (targetField.tag) {
                 case "startTemp":
                     printTxt("==Начальная температура, 0С  " + DateTime.Now +"   "+ valText.text  + Environment.NewLine);
@@ -137,44 +143,46 @@ public class EntryValuePanel : MonoBehaviour {
 
     }
     private void CalculateImpericalModels(TMP_Text startTemp, TMP_Text time, TMP_Text press) {
-        DataService ds = new DataService("mainV2.db");
-        var empiricalModels = ds.GetEmpiricalModels().ToList();
-        var coeff=ds.GetEmpiricalModelCoeff().ToList(); 
-        var formula = empiricalModels.First().Formula;
-        var coeffModels = new Dictionary<string, double>() {};
-        for(int i = 0; i < coeff.Count; i++) {
-            coeffModels.Add(coeff[i].Alias, coeff[i].Value);
+        //string taskPath = System.IO.Directory.GetCurrentDirectory() + "/script.txt";
+        string taskPath = "C:\\Users\\Alina\\Desktop\\СПБГТИ(ТУ)\\Diplom\\СПЕКАНИЕ\\Проект Шишко Колесникова\\Sintering-of-ceramics\\Sintering of ceramics\\bin\\Debug\\net6.0-windows\\script.txt";
+
+        var lines = System.IO.File.ReadAllLines(taskPath);
+        var empiricModels = new List<List<string>>();
+
+        foreach (var line in lines) {
+            if (line.Contains("//")) {
+                var split = line.Split(new[] { "//" }, StringSplitOptions.RemoveEmptyEntries);
+                empiricModels.Add(split.ToList());
+            } 
         }
-
-        StringBuilder sb = new StringBuilder(formula);
-        //for (int i = 0; i < sb.Length; i++) {
-        //foreach (var coef in coeffModels) {
-        //formula.Replace(coeffModels.Keys, coeffModels.Values.ToString());
-            //}
-       // }
-        //for (int i = 0;i<formula.Length-1; i++) {
-        //    foreach (var cm in coeffModels) {
-        //        if ((formula[i] + formula[i+1]).ToString()== cm.Key) {
-        //            formula[i] + formula[i + 1]= cm.Value;
-        //        }
-        //    }
-        //}
-       
-        //AngouriMath.Entity expr = formula;
-        // double answer = Math.Round((double)expr.EvalNumerical(), 2);
-        // Debug.Log(answer+" answer");
-        var expression = "0+1*7+2*8+3*9*9+4*5*5+5*7*7*5";
-   
-        var result=Parser.Parse(expression);
-        Debug.Log(result);
-
-
-
+        empiricModels.ToArray();
+        var expression = "";
+        var result = "";
+        for (int i=0; i<empiricModels.Count;i++) {
+            result = empiricModels[i][0];
+            while (empiricModels[i][0].Contains("Pg")) {
+                expression=empiricModels[i][0].Replace("Pg", press.text.ToString());
+                
+            }
+            while (empiricModels[i][0].Contains("T")) {
+                expression=empiricModels[i][0].Replace("T", startTemp.text.ToString());
+            }
+            while (empiricModels[i][0].Contains("tao")) {
+                expression=empiricModels[i][0].Replace("tao", time.text.ToString());
+            }
+            result = expression;
+            expression = empiricModels[i][0].ToString();
+           // result = Parser.Parse(expression);
+            Debug.Log(expression + "  RESULT MODEL CALC");
+        }
+        //result=Parser.Parse(expression);
+        //Debug.Log(result+"  RESULT MODEL CALC");
     }
 
    
     public async void printTxt(string text) {
-        string path = "C:/Users/Alina/Desktop/СПБГТИ(ТУ)/Diplom/СПЕКАНИЕ/Проект Шишко Колесникова/Sintering-of-ceramics/Sintering of ceramics/bin/Debug/net6.0-windows/logsRes.txt";
+         //string logPath = "C:/Users/Alina/Desktop/СПБГТИ(ТУ)/Diplom/СПЕКАНИЕ/Проект Шишко Колесникова/Sintering-of-ceramics/Sintering of ceramics/bin/Debug/net6.0-windows/logsRes.txt";
+        string logPath = System.IO.Directory.GetCurrentDirectory()+ "/logsRes.txt";
         Debug.Log(text);
         // полная перезапись файла 
         //StreamWriter writer = new StreamWriter(path, true);
@@ -182,9 +190,10 @@ public class EntryValuePanel : MonoBehaviour {
         //writer.WriteLineAsync("Addition");
         //writer.WriteAsync(text+ " "+time);
 
-        using (StreamWriter writer1 = new StreamWriter(path, true)) {
-            await writer1.WriteAsync(text + Environment.NewLine);
+        using (StreamWriter writer = new StreamWriter(logPath, true)) {
+            await writer.WriteAsync(text + Environment.NewLine);
         }
+      
     }
     public void Open(TMP_Text t) {
         targetField = t;
