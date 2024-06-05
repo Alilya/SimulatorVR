@@ -36,13 +36,11 @@ public class EntryValuePanel : MonoBehaviour {
     public UnityEngine.UI.Text textResult;
 
     void Start() {
-        ClickButtonCalc();
-        DataService ds = new DataService("mainV2.db") { };
-        List<string> task = ds.GetTask();
-        for(int i=0; i< task.Count; i++) {
-            printTxt(task[i]);
-        }
-        
+        printTxt("Начальная температура,0С  " + DateTime.Now + "  " + startTemp.text + Environment.NewLine
+      + "Конечная температура,0С  " + DateTime.Now + "  " + endTemp.text + Environment.NewLine
+      + "Время спекания,мин  " + DateTime.Now + "  " + time.text + Environment.NewLine
+      + "Давление,атм  " + DateTime.Now + "  " + press.text);
+
         for (int i = 0; i < valBtns.Length; ++i) {
             int elem = i;
             valBtns[i].down.AddListener(() => {
@@ -81,8 +79,23 @@ public class EntryValuePanel : MonoBehaviour {
                 targetField.text = string.Format("{0:f}", double.Parse(valText.text));
 
             }
-            ClickButtonCalc();
-            CalculateImpericalModels(startTemp, time, press);
+            string taskPath = System.IO.Directory.GetCurrentDirectory() + "/script.txt";
+            //string taskPath = "C:\\Users\\Alina\\Desktop\\СПБГТИ(ТУ)\\Diplom\\СПЕКАНИЕ\\Проект Шишко Колесникова\\Sintering-of-ceramics\\Sintering of ceramics\\bin\\Debug\\net6.0-windows\\script.txt";
+            var lines = System.IO.File.ReadAllLines(taskPath);
+
+            int count = 0;
+            foreach (var line in lines) {
+                if (line.Contains("//")) {
+                    count++;
+                }
+            }
+            if(count != 0) {
+                CalculateImpericalModels(startTemp, time, press);
+            }
+            else {
+                ClickButtonCalc();
+            }
+
             switch (targetField.tag) {
                 case "startTemp":
                     printTxt("==Начальная температура, 0С  " + DateTime.Now +"   "+ valText.text  + Environment.NewLine);
@@ -101,12 +114,7 @@ public class EntryValuePanel : MonoBehaviour {
             OnChangeVal?.Invoke(targetField);
             gameObject.SetActive(false);
         });
-
-       
         this.gameObject.SetActive(false);
-      
-      
-
     }
     public void ClickButtonCalc() {
         Sintering model = new Sintering(
@@ -130,11 +138,11 @@ public class EntryValuePanel : MonoBehaviour {
         var result = model.Calculate(true);
         string txt = "--Конечный диаметр зерна,мкм  " + DateTime.Now + "  " + result.LL + Environment.NewLine +
          "--Конечная пористость,%  " + DateTime.Now + "  " + result.PP + Environment.NewLine +
-         "--Конечная плотность,кг/м^3  " + DateTime.Now + "  " + result.Ro  + Environment.NewLine
-        +"Начальная температура,0С  " + DateTime.Now + "  " + startTemp.text + Environment.NewLine
-        + "Конечная температура,0С  " + DateTime.Now + "  " + endTemp.text + Environment.NewLine
-        + "Время спекания,мин  " + DateTime.Now + "  " + time.text + Environment.NewLine
-        + "Давление,атм  " + DateTime.Now + "  " + press.text ;
+         "--Конечная плотность,кг/м^3  " + DateTime.Now + "  " + result.Ro  + Environment.NewLine+
+         "!Начальная температура,0С  " + DateTime.Now + "  " + startTemp.text + Environment.NewLine
+      + "!Конечная температура,0С  " + DateTime.Now + "  " + endTemp.text + Environment.NewLine
+      + "!Время спекания,мин  " + DateTime.Now + "  " + time.text + Environment.NewLine
+      + "!Давление,атм  " + DateTime.Now + "  " + press.text + Environment.NewLine;
 
         printTxt(txt + Environment.NewLine);
 
@@ -144,12 +152,12 @@ public class EntryValuePanel : MonoBehaviour {
 
     }
     private void CalculateImpericalModels(TMP_Text startTemp, TMP_Text time, TMP_Text press) {
-        //string taskPath = System.IO.Directory.GetCurrentDirectory() + "/script.txt";
-        string taskPath = "C:\\Users\\Alina\\Desktop\\СПБГТИ(ТУ)\\Diplom\\СПЕКАНИЕ\\Проект Шишко Колесникова\\Sintering-of-ceramics\\Sintering of ceramics\\bin\\Debug\\net6.0-windows\\script.txt";
+        string taskPath = System.IO.Directory.GetCurrentDirectory() + "/script.txt";
+        //string taskPath = "C:\\Users\\Alina\\Desktop\\СПБГТИ(ТУ)\\Diplom\\СПЕКАНИЕ\\Проект Шишко Колесникова\\Sintering-of-ceramics\\Sintering of ceramics\\bin\\Debug\\net6.0-windows\\script.txt";
 
         var lines = System.IO.File.ReadAllLines(taskPath);
         var empiricModels = new List<List<string>>();
-
+      
         foreach (var line in lines) {
             if (line.Contains("//")) {
                 var split = line.Split(new[] { "//" }, StringSplitOptions.RemoveEmptyEntries);
@@ -159,6 +167,7 @@ public class EntryValuePanel : MonoBehaviour {
         empiricModels.ToArray();
         string expression = "";
         double result;
+        List<double> results = new List<double>();
         for (int i = 0; i < empiricModels.Count; i++) {
             expression= empiricModels[i][0].ToString();
             if (expression.Contains("Pg") || expression.Contains("T") || expression.Contains("tao")) {
@@ -167,11 +176,24 @@ public class EntryValuePanel : MonoBehaviour {
                 expression = expression.Replace("tao", time.text.ToString());
                 expression = expression.Replace(",", ".");
                 expression = expression.Replace("+-", "-");
+
                 result = Evaluate(expression);
-                Debug.Log(expression + "  -- RESULT");
+                results.Add(result);
             }
            
         }
+        string txt = "-_-Плотность твердого сплава,г/см3  " + DateTime.Now + "  " + results[0] + Environment.NewLine +
+       "-_-Прочность твердого сплава при поперечном изгибе,МПа  " + DateTime.Now + "  " + results[1] + Environment.NewLine +
+       "-_-Остаточная пористость твердого сплава,%  " + DateTime.Now + "  " + results[2] + Environment.NewLine +
+       "-_-Твердость сплава,ед  " + DateTime.Now + "  " + results[3] + Environment.NewLine;
+       ;
+
+        printTxt(txt + Environment.NewLine);
+
+        textResult.text = "Плотность твердого сплава,г/см3  " + results[0] + Environment.NewLine +
+       "Прочность твердого сплава при поперечном изгибе,МПа  " + results[1] + Environment.NewLine +
+       "Остаточная пористость твердого сплава,%  " + results[2] + Environment.NewLine +
+       "Твердость сплава,ед  " + results[3] + Environment.NewLine;
     }
     static double Evaluate(string expression) {
         var loDataTable = new DataTable();
@@ -182,9 +204,8 @@ public class EntryValuePanel : MonoBehaviour {
     }
 
     public async void printTxt(string text) {
-         //string logPath = "C:/Users/Alina/Desktop/СПБГТИ(ТУ)/Diplom/СПЕКАНИЕ/Проект Шишко Колесникова/Sintering-of-ceramics/Sintering of ceramics/bin/Debug/net6.0-windows/logsRes.txt";
+        //string logPath = "C:/Users/Alina/Desktop/СПБГТИ(ТУ)/Diplom/СПЕКАНИЕ/Проект Шишко Колесникова/Sintering-of-ceramics/Sintering of ceramics/bin/Debug/net6.0-windows/logsRes.txt";
         string logPath = System.IO.Directory.GetCurrentDirectory()+ "/logsRes.txt";
-        Debug.Log(text);
         // полная перезапись файла 
         //StreamWriter writer = new StreamWriter(path, true);
 
@@ -201,6 +222,5 @@ public class EntryValuePanel : MonoBehaviour {
         valText.text = t.text;
         var s = t.tag;
         gameObject.SetActive(true);
-        //Starter();
     }
 }
