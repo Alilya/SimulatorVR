@@ -30,7 +30,7 @@ namespace Keyboard
             InitializeKey();
         }
 
-        private void InitializeKey() => buttonText.text = keyboard.autoCapsAtStart ? character.ToUpper() : character;
+        private void InitializeKey() => buttonText.text = false ? character.ToUpper() : character;
 
         protected override void OnPress()
         {

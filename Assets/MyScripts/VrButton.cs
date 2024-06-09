@@ -24,15 +24,9 @@ public class VrButton : MonoBehaviour {
     public ButtonEvent down;
     public ButtonEvent press;
     public ButtonEvent up;
-
-   
+       
     public void Start() {
-        //Context context = new Context("mainV1.db");
-        //var materials = context.Materials.ToList();
-        //Console.WriteLine(materials);
-        //string path = "C:\\Users\\Alina\\OneDrive\\–‡·Ó˜ËÈ ÒÚÓÎ\\—œ¡√“»(“”)\\Diplom\\—œ≈ ¿Õ»≈\\SinteringSimulatorDiplomProject\\Assets\\StreamingAssets\\mainV1.db";
-        //SQLiteConnection conn = new SQLiteConnection(path);
-
+        
     }
     private void OnEnable() {
         TryGetComponent(out _button);
@@ -50,7 +44,8 @@ public class VrButton : MonoBehaviour {
             down?.Invoke();
             if (_button && isChangeColor)
                 _button.color = Color.gray;
-            StartCoroutine(Stay());
+            if (gameObject.active)
+                StartCoroutine(Stay());
         }
     }
 

@@ -1,4 +1,4 @@
-using System;
+п»їusing System;
 using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
@@ -8,19 +8,26 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Data;
 using System.Xml;
+using System.Diagnostics;
+using static Parser;
+using System.Globalization;
+using UnityEngine.Windows;
+using Unity.VisualScripting;
+
+
 
 public class EntryValuePanel : MonoBehaviour {
 
     public delegate void ChangeVal(TMP_Text message);
     public event ChangeVal OnChangeVal;
 
-    Regex inReg = new Regex("^-?(\\d){0,3}(,(\\d){0,2})?$");
+    Regex inReg = new Regex("^-?(\\d){0,4}(,(\\d){0,2})?$");
 
-    // [SerializeField] VrButton[] valBtns = new VrButton[10];
-    //[SerializeField] VrButton minusBtn;
-    // [SerializeField] VrButton commaBtn;
-    // [SerializeField] VrButton delBtn;
-    // [SerializeField] VrButton entrBtn;
+    [SerializeField] VrButton[] valBtns = new VrButton[10];
+    [SerializeField] VrButton minusBtn;
+    [SerializeField] VrButton commaBtn;
+    [SerializeField] VrButton delBtn;
+    [SerializeField] VrButton entrBtn;
 
     [SerializeField] TMP_Text valText;
 
@@ -30,138 +37,142 @@ public class EntryValuePanel : MonoBehaviour {
     [SerializeField] TMP_Text time;
     [SerializeField] TMP_Text press;
 
-    // VrButton btn = new VrButton();
+     VrButton btn = new VrButton();
     public UnityEngine.UI.Text textResult;
 
-    //void Start() {
-    //    printTxt("Начальная температура,0С  " + DateTime.Now + "  " + startTemp.text + Environment.NewLine
-    //  + "Конечная температура,0С  " + DateTime.Now + "  " + endTemp.text + Environment.NewLine
-    //  + "Время спекания,мин  " + DateTime.Now + "  " + time.text + Environment.NewLine
-    //  + "Давление,атм  " + DateTime.Now + "  " + press.text);
+    void Start() {
+        printTxt("РќР°С‡Р°Р»СЊРЅР°СЏ С‚РµРјРїРµСЂР°С‚СѓСЂР°,0РЎ  " + DateTime.Now + "  " + startTemp.text + Environment.NewLine
+      + "РљРѕРЅРµС‡РЅР°СЏ С‚РµРјРїРµСЂР°С‚СѓСЂР°,0РЎ  " + DateTime.Now + "  " + endTemp.text + Environment.NewLine
+      + "Р’СЂРµРјСЏ СЃРїРµРєР°РЅРёСЏ,РјРёРЅ  " + DateTime.Now + "  " + time.text + Environment.NewLine
+      + "Р”Р°РІР»РµРЅРёРµ,Р°С‚Рј  " + DateTime.Now + "  " + press.text);
 
-    //    for (int i = 0; i < valBtns.Length; ++i) {
-    //        int elem = i;
-    //        valBtns[i].down.AddListener(() => {
-    //            string resStr = valText.text + elem.ToString();
-    //            if (inReg.IsMatch(resStr)) {
-    //                valText.text = resStr;
-    //            }
-    //        });
-    //    }
-    //    minusBtn.down.AddListener(() => {
-    //        if (valText.text.Length == 0) {
-    //            valText.text = "-";
-    //        }
-    //    });
-
-    //    commaBtn.down.AddListener(() => {
-    //        string resStr = valText.text + ",";
-    //        if (inReg.IsMatch(resStr)) {
-    //            valText.text = resStr;
-    //        }
-    //    });
-
-    //    delBtn.down.AddListener(() => {
-    //        if (valText.text.Length == 0)
-    //            return;
-    //        valText.text = valText.text.Substring(0, valText.text.Length - 1);
-    //    });
-
-    //    entrBtn.down.AddListener(() => {
-    //        if (valText.text.Length == 0 ||
-    //            (valText.text.Length == 1 && valText.text == "-")) {
-    //            targetField.text = "0";
-    //        }
-    //        else {
-    //            targetField.text = string.Format("{0:f}", double.Parse(valText.text));
-
-    //        }
-    //        //string taskPath = System.IO.Directory.GetCurrentDirectory() + "/script.txt";
-    //        string taskPath = "C:\\Users\\Alina\\Desktop\\СПБГТИ(ТУ)\\Diplom\\СПЕКАНИЕ\\Проект Шишко Колесникова\\Sintering-of-ceramics\\Sintering of ceramics\\bin\\Debug\\net6.0-windows\\script.txt";
-    //        var lines = System.IO.File.ReadAllLines(taskPath);
-
-    //        int count = 0;
-    //        foreach (var line in lines) {
-    //            if (line.Contains("//")) {
-    //                count++;
-    //            }
-    //        }
-    //        if(count != 0) {
-    //            CalculateImpericalModels(startTemp, time, press);
-    //        }
-    //        else {
-    //            ClickButtonCalc();
-    //        }
-
-    //        switch (targetField.tag) {
-    //            case "startTemp":
-    //                printTxt("==Начальная температура, 0С  " + DateTime.Now +"   "+ valText.text  + Environment.NewLine);
-    //                break;
-    //            case "endTemp":
-    //                printTxt("==Конечная температура, 0С  " + DateTime.Now + "   " + valText.text + Environment.NewLine);
-    //                break;
-    //            case "time":
-    //                printTxt("==Время спекания, мин  " + DateTime.Now + "   " + valText.text  + Environment.NewLine);
-    //                break;
-    //            case "press":
-    //                printTxt("==Давление газа, атм  " + DateTime.Now + "   " + valText.text  + Environment.NewLine);
-    //                break;
-    //        }
-
-    //        OnChangeVal?.Invoke(targetField);
-    //        gameObject.SetActive(false);
-    //    });
-    //    this.gameObject.SetActive(false);
-    //}
-
-    public void CalcOpenEntry() {
-        printTxt("Начальная температура,0С  " + DateTime.Now + "  " + startTemp.text + Environment.NewLine
-      + "Конечная температура,0С  " + DateTime.Now + "  " + endTemp.text + Environment.NewLine
-      + "Время спекания,мин  " + DateTime.Now + "  " + time.text + Environment.NewLine
-      + "Давление,атм  " + DateTime.Now + "  " + press.text);
-
-        if (valText.text.Length == 0 ||
-            (valText.text.Length == 1 && valText.text == "-")) {
-            targetField.text = "0";
+        for (int i = 0; i < valBtns.Length; ++i) {
+            int elem = i;
+            valBtns[i].down.AddListener(() => {
+                string resStr = valText.text + elem.ToString();
+                if (inReg.IsMatch(resStr)) {
+                    valText.text = resStr;
+                }
+            });
         }
-        else {
-            targetField.text = valText.text;
-
-        }
-        //string taskPath = System.IO.Directory.GetCurrentDirectory() + "/script.txt";
-        string taskPath = "C:\\Users\\Alina\\Desktop\\СПБГТИ(ТУ)\\Diplom\\СПЕКАНИЕ\\Проект Шишко Колесникова\\Sintering-of-ceramics\\Sintering of ceramics\\bin\\Debug\\net6.0-windows\\script.txt";
-        var lines = System.IO.File.ReadAllLines(taskPath);
-
-        int count = 0;
-        foreach (var line in lines) {
-            if (line.Contains("//")) {
-                count++;
+        minusBtn.down.AddListener(() => {
+            if (valText.text.Length == 0) {
+                valText.text = "-";
             }
-        }
+        });
 
-        if (count != 0) {
-            CalculateImpericalModels(startTemp, time, press);
-        }
-        else {
-            ClickButtonCalc();
-        }
+        commaBtn.down.AddListener(() => {
+            string resStr = valText.text + ",";
+            if (inReg.IsMatch(resStr)) {
+                valText.text = resStr;
+            }
+        });
 
-        switch (targetField.tag) {
-            case "startTemp":
-                printTxt("==Начальная температура, 0С  " + DateTime.Now + "   " + valText.text + Environment.NewLine);
-                break;
-            case "endTemp":
-                printTxt("==Конечная температура, 0С  " + DateTime.Now + "   " + valText.text + Environment.NewLine);
-                break;
-            case "time":
-                printTxt("==Время спекания, мин  " + DateTime.Now + "   " + valText.text + Environment.NewLine);
-                break;
-            case "press":
-                printTxt("==Давление газа, атм  " + DateTime.Now + "   " + valText.text + Environment.NewLine);
-                break;
-        }
+        delBtn.down.AddListener(() => {
+            if (valText.text.Length == 0)
+                return;
+            valText.text = valText.text.Substring(0, valText.text.Length - 1);
+        });
+
+        entrBtn.down.AddListener(() => {
+            if (valText.text.Length == 0 ||
+                (valText.text.Length == 1 && valText.text == "-")) {
+                targetField.text = "0";
+            }
+            else {
+                targetField.text = string.Format("{0:f}", double.Parse(valText.text));
+
+            }
+            //string taskPath = System.IO.Directory.GetCurrentDirectory() + "/script.txt";
+           // string taskPath = "C:\\Users\\Alina\\Desktop\\РЎРџР‘Р“РўР(РўРЈ)\\Diplom\\РЎРџР•РљРђРќРР•\\РџСЂРѕРµРєС‚ РЁРёС€РєРѕ РљРѕР»РµСЃРЅРёРєРѕРІР°\\Sintering-of-ceramics\\Sintering of ceramics\\bin\\Debug\\net6.0-windows\\script.txt";
+          //  var lines = System.IO.File.ReadAllLines(taskPath);
+
+            //int count = 0;
+            //foreach (var line in lines) {
+            //    if (line.Contains("//")) {
+            //        count++;
+            //    }
+            //}
+            //if (count != 0) {
+            //   // CalculateImpericalModels(startTemp, time, press);
+            //}
+            //else {
+            //   // ClickButtonCalc();
+            //}
+
+            //switch (targetField.tag) {
+            //    case "startTemp":
+            //        printTxt("==РќР°С‡Р°Р»СЊРЅР°СЏ С‚РµРјРїРµСЂР°С‚СѓСЂР°, 0РЎ  " + DateTime.Now + "   " + valText.text + Environment.NewLine);
+            //        break;
+            //    case "endTemp":
+            //        printTxt("==РљРѕРЅРµС‡РЅР°СЏ С‚РµРјРїРµСЂР°С‚СѓСЂР°, 0РЎ  " + DateTime.Now + "   " + valText.text + Environment.NewLine);
+            //        break;
+            //    case "time":
+            //        printTxt("==Р’СЂРµРјСЏ СЃРїРµРєР°РЅРёСЏ, РјРёРЅ  " + DateTime.Now + "   " + valText.text + Environment.NewLine);
+            //        break;
+            //    case "press":
+            //        printTxt("==Р”Р°РІР»РµРЅРёРµ РіР°Р·Р°, Р°С‚Рј  " + DateTime.Now + "   " + valText.text + Environment.NewLine);
+            //        break;
+            //}
+
+            OnChangeVal?.Invoke(targetField);
+            gameObject.SetActive(false);
+        });
         this.gameObject.SetActive(false);
     }
+
+    //public void CalcOpenEntry() {
+    //    printTxt("РќР°С‡Р°Р»СЊРЅР°СЏ С‚РµРјРїРµСЂР°С‚СѓСЂР°,0РЎ  " + DateTime.Now + "  " + startTemp.text + Environment.NewLine
+    //  + "РљРѕРЅРµС‡РЅР°СЏ С‚РµРјРїРµСЂР°С‚СѓСЂР°,0РЎ  " + DateTime.Now + "  " + endTemp.text + Environment.NewLine
+    //  + "Р’СЂРµРјСЏ СЃРїРµРєР°РЅРёСЏ,РјРёРЅ  " + DateTime.Now + "  " + time.text + Environment.NewLine
+    //  + "Р”Р°РІР»РµРЅРёРµ,Р°С‚Рј  " + DateTime.Now + "  " + press.text);
+
+    //    if (valText.text.Length == 0 ||
+    //        (valText.text.Length == 1 && valText.text == "-")) {
+    //        targetField.text = "0";
+    //    }
+    //    else {
+    //        targetField.text = valText.text;
+    //        //var fld = double.Parse(valText.text);
+    //        //int num = 0;
+    //        //string str = valText.text.ToString();
+    //        // targetField.text = str;
+
+    //    }
+    //    // string taskPath = System.IO.Directory.GetCurrentDirectory() + "/script.txt";
+    //    string taskPath = "C:\\Users\\Alina\\Desktop\\РЎРџР‘Р“РўР(РўРЈ)\\Diplom\\РЎРџР•РљРђРќРР•\\РџСЂРѕРµРєС‚ РЁРёС€РєРѕ РљРѕР»РµСЃРЅРёРєРѕРІР°\\Sintering-of-ceramics\\Sintering of ceramics\\bin\\Debug\\net6.0-windows\\script.txt";
+    //    var lines = System.IO.File.ReadAllLines(taskPath);
+
+    //    int count = 0;
+    //    foreach (var line in lines) {
+    //        if (line.Contains("//")) {
+    //            count++;
+    //        }
+    //    }
+
+    //    if (count != 0) {
+    //        CalculateImpericalModels(startTemp, time, press);
+    //    }
+    //    else {
+    //        ClickButtonCalc();
+    //    }
+
+    //    switch (targetField.tag) {
+    //        case "startTemp":
+    //            printTxt("==РќР°С‡Р°Р»СЊРЅР°СЏ С‚РµРјРїРµСЂР°С‚СѓСЂР°, 0РЎ  " + DateTime.Now + "   " + valText.text + Environment.NewLine);
+    //            break;
+    //        case "endTemp":
+    //            printTxt("==РљРѕРЅРµС‡РЅР°СЏ С‚РµРјРїРµСЂР°С‚СѓСЂР°, 0РЎ  " + DateTime.Now + "   " + valText.text + Environment.NewLine);
+    //            break;
+    //        case "time":
+    //            printTxt("==Р’СЂРµРјСЏ СЃРїРµРєР°РЅРёСЏ, РјРёРЅ  " + DateTime.Now + "   " + valText.text + Environment.NewLine);
+    //            break;
+    //        case "press":
+    //            printTxt("==Р”Р°РІР»РµРЅРёРµ РіР°Р·Р°, Р°С‚Рј  " + DateTime.Now + "   " + valText.text + Environment.NewLine);
+    //            break;
+    //    }
+    //    this.gameObject.SetActive(false);
+    //}
     public void ClickButtonCalc() {
         Sintering model = new Sintering(
                    t0: Convert.ToDouble(startTemp.text),
@@ -182,25 +193,25 @@ public class EntryValuePanel : MonoBehaviour {
                    tau2: 60 * 60);
 
         var result = model.Calculate(true);
-        string txt = "--Конечный диаметр зерна,мкм  " + DateTime.Now + "  " + result.LL + Environment.NewLine +
-         "--Конечная пористость,%  " + DateTime.Now + "  " + result.PP + Environment.NewLine +
-         "--Конечная плотность,кг/м^3  " + DateTime.Now + "  " + result.Ro + Environment.NewLine +
-         "!Начальная температура,0С  " + DateTime.Now + "  " + startTemp.text + Environment.NewLine
-      + "!Конечная температура,0С  " + DateTime.Now + "  " + endTemp.text + Environment.NewLine
-      + "!Время спекания,мин  " + DateTime.Now + "  " + time.text + Environment.NewLine
-      + "!Давление,атм  " + DateTime.Now + "  " + press.text + Environment.NewLine;
+        string txt = "--РљРѕРЅРµС‡РЅС‹Р№ РґРёР°РјРµС‚СЂ Р·РµСЂРЅР°,РјРєРј  " + DateTime.Now + "  " + result.LL + Environment.NewLine +
+         "--РљРѕРЅРµС‡РЅР°СЏ РїРѕСЂРёСЃС‚РѕСЃС‚СЊ,%  " + DateTime.Now + "  " + result.PP + Environment.NewLine +
+         "--РљРѕРЅРµС‡РЅР°СЏ РїР»РѕС‚РЅРѕСЃС‚СЊ,РєРі/Рј^3  " + DateTime.Now + "  " + result.Ro + Environment.NewLine +
+         "!РќР°С‡Р°Р»СЊРЅР°СЏ С‚РµРјРїРµСЂР°С‚СѓСЂР°,0РЎ  " + DateTime.Now + "  " + startTemp.text + Environment.NewLine
+      + "!РљРѕРЅРµС‡РЅР°СЏ С‚РµРјРїРµСЂР°С‚СѓСЂР°,0РЎ  " + DateTime.Now + "  " + endTemp.text + Environment.NewLine
+      + "!Р’СЂРµРјСЏ СЃРїРµРєР°РЅРёСЏ,РјРёРЅ  " + DateTime.Now + "  " + time.text + Environment.NewLine
+      + "!Р”Р°РІР»РµРЅРёРµ,Р°С‚Рј  " + DateTime.Now + "  " + press.text + Environment.NewLine;
 
         printTxt(txt + Environment.NewLine);
 
-        textResult.text = "Конечный диаметр зерна,мкм = " + Math.Round(result.LL, 5) + '\n' +
-         "Конечная пористость,% = " + Math.Round(result.PP, 5) + '\n' +
-         "Конечная плотность,кг/м^3 = " + Math.Round(result.Ro, 5);
+        textResult.text = "РљРѕРЅРµС‡РЅС‹Р№ РґРёР°РјРµС‚СЂ Р·РµСЂРЅР°,РјРєРј = " + Math.Round(result.LL, 5) + '\n' +
+         "РљРѕРЅРµС‡РЅР°СЏ РїРѕСЂРёСЃС‚РѕСЃС‚СЊ,% = " + Math.Round(result.PP, 5) + '\n' +
+         "РљРѕРЅРµС‡РЅР°СЏ РїР»РѕС‚РЅРѕСЃС‚СЊ,РєРі/Рј^3 = " + Math.Round(result.Ro, 5);
 
     }
     private void CalculateImpericalModels(TMP_Text startTemp, TMP_Text time, TMP_Text press) {
         //string taskPath = System.IO.Directory.GetCurrentDirectory() + "/script.txt";
-        string taskPath = "C:\\Users\\Alina\\Desktop\\СПБГТИ(ТУ)\\Diplom\\СПЕКАНИЕ\\Проект Шишко Колесникова\\Sintering-of-ceramics\\Sintering of ceramics\\bin\\Debug\\net6.0-windows\\script.txt";
-
+        string taskPath = "C:\\Users\\Alina\\Desktop\\РЎРџР‘Р“РўР(РўРЈ)\\Diplom\\РЎРџР•РљРђРќРР•\\РџСЂРѕРµРєС‚ РЁРёС€РєРѕ РљРѕР»РµСЃРЅРёРєРѕРІР°\\Sintering-of-ceramics\\Sintering of ceramics\\bin\\Debug\\net6.0-windows\\script.txt";
+     
         var lines = System.IO.File.ReadAllLines(taskPath);
         var empiricModels = new List<List<string>>();
 
@@ -214,35 +225,40 @@ public class EntryValuePanel : MonoBehaviour {
         string expression = "";
         double result;
         List<double> results = new List<double>();
+
+
         for (int i = 0; i < empiricModels.Count; i++) {
             expression = empiricModels[i][0].ToString();
             if (expression.Contains("Pg") || expression.Contains("T") || expression.Contains("tao")) {
-                expression = expression.Replace("Pg", press.text.ToString());
+                expression = expression.Replace("Pg", press.text);//80 
                 //expression = expression.Replace("Pg", "40");
-                expression = expression.Replace("T", startTemp.text.ToString());
+                expression = expression.Replace("T", startTemp.text);//1200
                 //expression = expression.Replace("T", "1300");
-                expression = expression.Replace("tao", time.text.ToString());
+                expression = expression.Replace("tao", time.text);//600,00 600 
+                var q = time.text;
                 //expression = expression.Replace("tao", "60");
                 expression = expression.Replace(",", ".");
-                expression = expression.Replace("+-", "-");
-
-                result = Evaluate(expression);
+                expression = expression.Replace("+-", "-");//199.4-0.2765*1200-4.486*667вЂ‹+0.0062*1200*667вЂ‹+0.00096*1200*1200+0.0449*667вЂ‹*667вЂ‹-2E-06*1200*1200*667вЂ‹-6.2E-05*1200*667вЂ‹*667вЂ‹-2E-08*1200*1200*667вЂ‹*667
+                
+                result = Evaluate(expression);//199.4-0.2765*1200-4.486*65.00+0.0062*1200*65.00+0.00096*1200*1200+0.0449*65.00*65.00-2E-06*1200*1200*65.00-6.2E-05*1200*65.00*65.00-2E-08*1200*1200*65.00*65.00
                 results.Add(result);
             }
 
         }
-        string txt = "-_-Плотность твердого сплава,г/см3  " + DateTime.Now + "  " + results[0] + Environment.NewLine +
-       "-_-Прочность твердого сплава при поперечном изгибе,МПа  " + DateTime.Now + "  " + results[1] + Environment.NewLine +
-       "-_-Остаточная пористость твердого сплава,%  " + DateTime.Now + "  " + results[2] + Environment.NewLine +
-       "-_-Твердость сплава,ед  " + DateTime.Now + "  " + results[3] + Environment.NewLine;
+        string txt = "-_-РџР»РѕС‚РЅРѕСЃС‚СЊ С‚РІРµСЂРґРѕРіРѕ СЃРїР»Р°РІР°,Рі/СЃРј3  " + DateTime.Now + "  " + results[0] + Environment.NewLine +
+       "-_-РџСЂРѕС‡РЅРѕСЃС‚СЊ С‚РІРµСЂРґРѕРіРѕ СЃРїР»Р°РІР° РїСЂРё РїРѕРїРµСЂРµС‡РЅРѕРј РёР·РіРёР±Рµ,РњРџР°  " + DateTime.Now + "  " + results[1] + Environment.NewLine +
+       "-_-РћСЃС‚Р°С‚РѕС‡РЅР°СЏ РїРѕСЂРёСЃС‚РѕСЃС‚СЊ С‚РІРµСЂРґРѕРіРѕ СЃРїР»Р°РІР°,%  " + DateTime.Now + "  " + results[2] + Environment.NewLine +
+       "-_-РўРІРµСЂРґРѕСЃС‚СЊ СЃРїР»Р°РІР°,РµРґ  " + DateTime.Now + "  " + results[3] + Environment.NewLine;
         ;
-
+        
         printTxt(txt + Environment.NewLine);
 
-        textResult.text = "Плотность твердого сплава,г/см3  " + results[0] + Environment.NewLine +
-       "Прочность твердого сплава при поперечном изгибе,МПа  " + results[1] + Environment.NewLine +
-       "Остаточная пористость твердого сплава,%  " + results[2] + Environment.NewLine +
-       "Твердость сплава,ед  " + results[3] + Environment.NewLine;
+        textResult.text = "РџР»РѕС‚РЅРѕСЃС‚СЊ С‚РІРµСЂРґРѕРіРѕ СЃРїР»Р°РІР°,Рі/СЃРј3  " + results[0] + Environment.NewLine +
+       "РџСЂРѕС‡РЅРѕСЃС‚СЊ С‚РІРµСЂРґРѕРіРѕ СЃРїР»Р°РІР° РїСЂРё РїРѕРїРµСЂРµС‡РЅРѕРј РёР·РіРёР±Рµ,РњРџР°  " + results[1] + Environment.NewLine +
+       "РћСЃС‚Р°С‚РѕС‡РЅР°СЏ РїРѕСЂРёСЃС‚РѕСЃС‚СЊ С‚РІРµСЂРґРѕРіРѕ СЃРїР»Р°РІР°,%  " + results[2] + Environment.NewLine +
+       "РўРІРµСЂРґРѕСЃС‚СЊ СЃРїР»Р°РІР°,РµРґ  " + results[3] + Environment.NewLine;
+       
+
     }
     static double Evaluate(string expression) {
         var loDataTable = new DataTable();
@@ -253,9 +269,9 @@ public class EntryValuePanel : MonoBehaviour {
     }
 
     public async void printTxt(string text) {
-        string logPath = "C:/Users/Alina/Desktop/СПБГТИ(ТУ)/Diplom/СПЕКАНИЕ/Проект Шишко Колесникова/Sintering-of-ceramics/Sintering of ceramics/bin/Debug/net6.0-windows/logsRes.txt";
+        string logPath = "C:/Users/Alina/Desktop/РЎРџР‘Р“РўР(РўРЈ)/Diplom/РЎРџР•РљРђРќРР•/РџСЂРѕРµРєС‚ РЁРёС€РєРѕ РљРѕР»РµСЃРЅРёРєРѕРІР°/Sintering-of-ceramics/Sintering of ceramics/bin/Debug/net6.0-windows/logsRes.txt";
         //string logPath = System.IO.Directory.GetCurrentDirectory()+ "/logsRes.txt";
-        // полная перезапись файла 
+        // РїРѕР»РЅР°СЏ РїРµСЂРµР·Р°РїРёСЃСЊ С„Р°Р№Р»Р° 
         //StreamWriter writer = new StreamWriter(path, true);
 
         //writer.WriteLineAsync("Addition");
@@ -264,9 +280,10 @@ public class EntryValuePanel : MonoBehaviour {
         using (StreamWriter writer = new StreamWriter(logPath, true)) {
             await writer.WriteAsync(text + Environment.NewLine);
         }
-
     }
     public void Open(TMP_Text t) {
+        if (valText.text.Length != 0)
+            valText.text = "";
         targetField = t;
         valText.text = t.text;
         var s = t.tag;

@@ -24,33 +24,33 @@ namespace Keyboard
     {
         [Header("Keyboard Setup")]
         [SerializeField] private KeyChannel keyChannel;
-        [SerializeField] private Button spacebarButton;
-        [SerializeField] private Button speechButton;
+      //  [SerializeField] private Button spacebarButton;
+       // [SerializeField] private Button speechButton;
         [SerializeField] private Button deleteButton;
-        [SerializeField] private Button switchButton;
-        [SerializeField] private string switchToNumbers = "Numbers";
-        [SerializeField] private string switchToLetter = "Letters";
+        //[SerializeField] private Button switchButton;
+        //[SerializeField] private string switchToNumbers = "Numbers";
+       //[SerializeField] private string switchToLetter = "Letters";
 
-        private TextMeshProUGUI switchButtonText;
+      //  private TextMeshProUGUI switchButtonText;
         
         [Header("Keyboards")]
-        [SerializeField] private GameObject lettersKeyboard;
+       // [SerializeField] private GameObject lettersKeyboard;
         [SerializeField] private GameObject numbersKeyboard;
-        [SerializeField] private GameObject specialCharactersKeyboard;
+       // [SerializeField] private GameObject specialCharactersKeyboard;
 
         [Header("Shift/Caps Lock Button")] 
-        [SerializeField] internal bool autoCapsAtStart = true;
-        [SerializeField] private Button shiftButton;
+        //[SerializeField] internal bool autoCapsAtStart = true;
+        //[SerializeField] private Button shiftButton;
         [SerializeField] private Image buttonImage;
         [SerializeField] private Sprite defaultSprite;
         [SerializeField] private Sprite activeSprite;
         
         [Header("Switch Number/Special Button")]
-        [SerializeField] private Button switchNumberSpecialButton;
+        //[SerializeField] private Button switchNumberSpecialButton;
         [SerializeField] private string numbersString = "Numbers";
-        [SerializeField] private string specialString = "Special";
+      //  [SerializeField] private string specialString = "Special";
 
-        private TextMeshProUGUI switchNumSpecButtonText;
+        //private TextMeshProUGUI switchNumSpecButtonText;
         
         [Header("Keyboard Button Colors")]
         [SerializeField] private Color normalColor = Color.black;
@@ -77,41 +77,41 @@ namespace Keyboard
 
         private void Awake()
         {
-            shiftButtonColors = shiftButton.colors;
+           // shiftButtonColors = shiftButton.colors;
             
             CheckTextLength();
 
-            speechButton.interactable = false;
+            //speechButton.interactable = false;
             
-            numbersKeyboard.SetActive(false);
-            specialCharactersKeyboard.SetActive(false);
-            lettersKeyboard.SetActive(true);
+            numbersKeyboard.SetActive(true);
+            //specialCharactersKeyboard.SetActive(false);
+            //lettersKeyboard.SetActive(true);
 
-            spacebarButton.onClick.AddListener(OnSpacePress);
+           // spacebarButton.onClick.AddListener(OnSpacePress);
             deleteButton.onClick.AddListener(OnDeletePress);
-            switchButton.onClick.AddListener(OnSwitchPress);
-            shiftButton.onClick.AddListener(OnShiftPress);
-            switchNumberSpecialButton.onClick.AddListener(SwitchBetweenNumbersAndSpecialCharacters);
-            switchButtonText = switchButton.GetComponentInChildren<TextMeshProUGUI>();
-            switchNumSpecButtonText = switchNumberSpecialButton.GetComponentInChildren<TextMeshProUGUI>();
+           // switchButton.onClick.AddListener(OnSwitchPress);
+            //shiftButton.onClick.AddListener(OnShiftPress);
+            //switchNumberSpecialButton.onClick.AddListener(SwitchBetweenNumbersAndSpecialCharacters);
+           // switchButtonText = switchButton.GetComponentInChildren<TextMeshProUGUI>();
+            //switchNumSpecButtonText = switchNumberSpecialButton.GetComponentInChildren<TextMeshProUGUI>();
             keyChannel.RaiseKeyColorsChangedEvent(normalColor, highlightedColor, pressedColor, selectedColor);
             
-            switchNumberSpecialButton.gameObject.SetActive(false);
-            numbersKeyboard.SetActive(false);
-            specialCharactersKeyboard.SetActive(false);
+          //  switchNumberSpecialButton.gameObject.SetActive(false);
+            numbersKeyboard.SetActive(true);
+            //specialCharactersKeyboard.SetActive(false);
 
-            if (!autoCapsAtStart) return;
+          //  if (!autoCapsAtStart) return;
             ActivateShift();
             UpdateShiftButtonAppearance();
         }
 
         private void OnDestroy()
         {
-            spacebarButton.onClick.RemoveListener(OnSpacePress);
+          //  spacebarButton.onClick.RemoveListener(OnSpacePress);
             deleteButton.onClick.RemoveListener(OnDeletePress);
-            switchButton.onClick.RemoveListener(OnSwitchPress);
-            shiftButton.onClick.RemoveListener(OnShiftPress);
-            switchNumberSpecialButton.onClick.RemoveListener(SwitchBetweenNumbersAndSpecialCharacters);
+            //switchButton.onClick.RemoveListener(OnSwitchPress);
+           // shiftButton.onClick.RemoveListener(OnShiftPress);
+           // switchNumberSpecialButton.onClick.RemoveListener(SwitchBetweenNumbersAndSpecialCharacters);
         }
 
         private void OnEnable() => keyChannel.OnKeyPressed += KeyPress;
@@ -207,30 +207,30 @@ namespace Keyboard
 
         private void OnSwitchPress()
         {
-            if (lettersKeyboard.activeSelf)
-            {
-                lettersKeyboard.SetActive(false);
-                numbersKeyboard.SetActive(true);
-                specialCharactersKeyboard.SetActive(false);
-                switchNumberSpecialButton.gameObject.SetActive(true);
+            //if (lettersKeyboard.activeSelf)
+           // {
+              //  lettersKeyboard.SetActive(false);
+               // numbersKeyboard.SetActive(true);
+               // specialCharactersKeyboard.SetActive(false);
+                //switchNumberSpecialButton.gameObject.SetActive(true);
 
                 // Set buttons' text
-                switchButtonText.text = switchToNumbers;
-                switchNumSpecButtonText.text = specialString;
-            }
-            else
-            {
-                lettersKeyboard.SetActive(true);
-                numbersKeyboard.SetActive(false);
-                specialCharactersKeyboard.SetActive(false);
-                switchNumberSpecialButton.gameObject.SetActive(false);
+               // switchButtonText.text = switchToNumbers;
+               // switchNumSpecButtonText.text = specialString;
+            //}
+           // else
+           // {
+                //lettersKeyboard.SetActive(true);
+               // numbersKeyboard.SetActive(false);
+               // specialCharactersKeyboard.SetActive(false);
+               // switchNumberSpecialButton.gameObject.SetActive(false);
 
                 // Set buttons' text
-                switchButtonText.text = switchToLetter;
-                switchNumSpecButtonText.text = specialString;
-            }
-            DeactivateShift();
-            onKeyboardModeChanged?.Invoke();
+               // switchButtonText.text = switchToLetter;
+                //switchNumSpecButtonText.text = specialString;
+            //}
+          //  DeactivateShift();
+            //onKeyboardModeChanged?.Invoke();
         }
 
 
@@ -288,8 +288,7 @@ namespace Keyboard
 
         public bool IsCapsLockActive() => capsLockActive;
 
-        private void SwitchBetweenNumbersAndSpecialCharacters()
-        {
+        private void SwitchBetweenNumbersAndSpecialCharacters() {/*
             if (lettersKeyboard.activeSelf) return;
 
             // Switch between numbers and special characters keyboard
@@ -299,10 +298,9 @@ namespace Keyboard
 
             switchNumSpecButtonText.text = switchNumSpecButtonText.text == specialString ? numbersString : specialString;
 
-            onKeyboardModeChanged?.Invoke();
+            onKeyboardModeChanged?.Invoke();*/
         }
-
-        private void UpdateShiftButtonAppearance()
+            private void UpdateShiftButtonAppearance()
         {
             if (capsLockActive)
             {
@@ -320,7 +318,7 @@ namespace Keyboard
                 buttonImage.sprite = defaultSprite;
             }
 
-            shiftButton.colors = shiftButtonColors;
+            //shiftButton.colors = shiftButtonColors;
         }
     }
 }
