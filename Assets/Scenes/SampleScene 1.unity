@@ -136,7 +136,6 @@ GameObject:
   - component: {fileID: 1803358}
   - component: {fileID: 1803360}
   - component: {fileID: 1803361}
-  - component: {fileID: 1803362}
   m_Layer: 5
   m_Name: ButtonMinus
   m_TagString: Untagged
@@ -245,24 +244,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1803362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1803355}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07b3638c2f5db5b479ff24c2859713d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PokeFollowTransform: {fileID: 0}
-  m_SmoothingSpeed: 16
-  m_ReturnToInitialPosition: 1
-  m_ApplyIfChildIsTarget: 1
-  m_ClampToMaxDistance: 0
-  m_MaxDistance: 6
 --- !u!1 &7434810 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3484128599700441564, guid: 02be27ab17ab3b14f954f65dc06dd738, type: 3}
@@ -464,7 +445,6 @@ GameObject:
   - component: {fileID: 77266148}
   - component: {fileID: 77266150}
   - component: {fileID: 77266151}
-  - component: {fileID: 77266152}
   m_Layer: 5
   m_Name: ButtonComma
   m_TagString: Untagged
@@ -573,24 +553,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &77266152
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 77266145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07b3638c2f5db5b479ff24c2859713d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PokeFollowTransform: {fileID: 0}
-  m_SmoothingSpeed: 16
-  m_ReturnToInitialPosition: 1
-  m_ApplyIfChildIsTarget: 1
-  m_ClampToMaxDistance: 0
-  m_MaxDistance: 6
 --- !u!1 &82355498 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 146086, guid: c4e389e44d96da64ea974ab237ce1a9a, type: 3}
@@ -1254,7 +1216,6 @@ GameObject:
   - component: {fileID: 258517243}
   - component: {fileID: 258517245}
   - component: {fileID: 258517246}
-  - component: {fileID: 258517247}
   m_Layer: 5
   m_Name: Button5
   m_TagString: Untagged
@@ -1363,24 +1324,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &258517247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 258517240}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07b3638c2f5db5b479ff24c2859713d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PokeFollowTransform: {fileID: 0}
-  m_SmoothingSpeed: 16
-  m_ReturnToInitialPosition: 1
-  m_ApplyIfChildIsTarget: 1
-  m_ClampToMaxDistance: 0
-  m_MaxDistance: 6
 --- !u!1 &265073585
 GameObject:
   m_ObjectHideFlags: 0
@@ -1458,7 +1401,7 @@ MonoBehaviour:
   down:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 308032464}
+      - m_Target: {fileID: 1972877599}
         m_TargetAssemblyTypeName: EntryValuePanel, Assembly-CSharp
         m_MethodName: Open
         m_Mode: 2
@@ -2210,7 +2153,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -62.77, y: -129}
+  m_AnchoredPosition: {x: -124, y: -129}
   m_SizeDelta: {x: 338.5, y: 250.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &434810345
@@ -2519,7 +2462,6 @@ GameObject:
   - component: {fileID: 546477514}
   - component: {fileID: 546477516}
   - component: {fileID: 546477517}
-  - component: {fileID: 546477518}
   m_Layer: 5
   m_Name: Button4
   m_TagString: Untagged
@@ -2628,24 +2570,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &546477518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 546477511}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07b3638c2f5db5b479ff24c2859713d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PokeFollowTransform: {fileID: 0}
-  m_SmoothingSpeed: 16
-  m_ReturnToInitialPosition: 1
-  m_ApplyIfChildIsTarget: 1
-  m_ClampToMaxDistance: 0
-  m_MaxDistance: 6
 --- !u!1001 &547049195
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2990,7 +2914,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 60
+  m_text: 18
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3451,7 +3375,6 @@ GameObject:
   - component: {fileID: 775122037}
   - component: {fileID: 775122039}
   - component: {fileID: 775122040}
-  - component: {fileID: 775122041}
   m_Layer: 5
   m_Name: Button2
   m_TagString: Untagged
@@ -3560,24 +3483,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &775122041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 775122034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07b3638c2f5db5b479ff24c2859713d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PokeFollowTransform: {fileID: 0}
-  m_SmoothingSpeed: 16
-  m_ReturnToInitialPosition: 1
-  m_ApplyIfChildIsTarget: 1
-  m_ClampToMaxDistance: 0
-  m_MaxDistance: 6
 --- !u!1 &885597496
 GameObject:
   m_ObjectHideFlags: 0
@@ -4165,7 +4070,6 @@ GameObject:
   - component: {fileID: 955601832}
   - component: {fileID: 955601834}
   - component: {fileID: 955601835}
-  - component: {fileID: 955601836}
   m_Layer: 5
   m_Name: Button7
   m_TagString: Untagged
@@ -4274,24 +4178,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &955601836
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 955601829}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07b3638c2f5db5b479ff24c2859713d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PokeFollowTransform: {fileID: 0}
-  m_SmoothingSpeed: 16
-  m_ReturnToInitialPosition: 1
-  m_ApplyIfChildIsTarget: 1
-  m_ClampToMaxDistance: 0
-  m_MaxDistance: 6
 --- !u!4 &990443934 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
@@ -4439,7 +4325,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1400
+  m_text: 1200
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4710,7 +4596,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1200
+  m_text: 20
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5225,7 +5111,6 @@ GameObject:
   - component: {fileID: 1174568692}
   - component: {fileID: 1174568694}
   - component: {fileID: 1174568695}
-  - component: {fileID: 1174568696}
   m_Layer: 5
   m_Name: ButtonDel
   m_TagString: Untagged
@@ -5334,24 +5219,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1174568696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1174568689}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07b3638c2f5db5b479ff24c2859713d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PokeFollowTransform: {fileID: 0}
-  m_SmoothingSpeed: 16
-  m_ReturnToInitialPosition: 1
-  m_ApplyIfChildIsTarget: 1
-  m_ClampToMaxDistance: 0
-  m_MaxDistance: 6
 --- !u!1001 &1175635203
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5365,6 +5232,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3484128598163620932, guid: 02be27ab17ab3b14f954f65dc06dd738, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3484128598174819075, guid: 02be27ab17ab3b14f954f65dc06dd738, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -5416,6 +5287,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3484128598858123231, guid: 02be27ab17ab3b14f954f65dc06dd738, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3484128598932969322, guid: 02be27ab17ab3b14f954f65dc06dd738, type: 3}
       propertyPath: m_text
       value: 
@@ -5427,6 +5302,10 @@ PrefabInstance:
     - target: {fileID: 3484128598961847049, guid: 02be27ab17ab3b14f954f65dc06dd738, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3484128598961847049, guid: 02be27ab17ab3b14f954f65dc06dd738, type: 3}
+      propertyPath: m_TagString
+      value: EntryValuePanel
       objectReference: {fileID: 0}
     - target: {fileID: 3484128598961847050, guid: 02be27ab17ab3b14f954f65dc06dd738, type: 3}
       propertyPath: m_Enabled
@@ -5640,6 +5519,14 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3484128599267958349, guid: 02be27ab17ab3b14f954f65dc06dd738, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3484128599267958350, guid: 02be27ab17ab3b14f954f65dc06dd738, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3484128599267958351, guid: 02be27ab17ab3b14f954f65dc06dd738, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.08637838
@@ -5730,7 +5617,6 @@ GameObject:
   - component: {fileID: 1175695032}
   - component: {fileID: 1175695035}
   - component: {fileID: 1175695034}
-  - component: {fileID: 1175695036}
   m_Layer: 5
   m_Name: ButtonInput
   m_TagString: Untagged
@@ -5796,24 +5682,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1175695031}
   m_CullTransparentMesh: 1
---- !u!114 &1175695036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1175695031}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07b3638c2f5db5b479ff24c2859713d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PokeFollowTransform: {fileID: 0}
-  m_SmoothingSpeed: 16
-  m_ReturnToInitialPosition: 1
-  m_ApplyIfChildIsTarget: 1
-  m_ClampToMaxDistance: 0
-  m_MaxDistance: 6
 --- !u!1 &1196645640 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 724666597063956618, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
@@ -6092,7 +5960,6 @@ GameObject:
   - component: {fileID: 1258321580}
   - component: {fileID: 1258321582}
   - component: {fileID: 1258321583}
-  - component: {fileID: 1258321584}
   m_Layer: 5
   m_Name: ButtonEnter
   m_TagString: Untagged
@@ -6201,24 +6068,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1258321584
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1258321577}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07b3638c2f5db5b479ff24c2859713d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PokeFollowTransform: {fileID: 0}
-  m_SmoothingSpeed: 16
-  m_ReturnToInitialPosition: 1
-  m_ApplyIfChildIsTarget: 1
-  m_ClampToMaxDistance: 0
-  m_MaxDistance: 6
 --- !u!1 &1273491110 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 167098, guid: c4e389e44d96da64ea974ab237ce1a9a, type: 3}
@@ -6286,7 +6135,6 @@ GameObject:
   - component: {fileID: 1312612809}
   - component: {fileID: 1312612811}
   - component: {fileID: 1312612812}
-  - component: {fileID: 1312612813}
   m_Layer: 5
   m_Name: Button1
   m_TagString: Untagged
@@ -6395,24 +6243,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1312612813
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1312612806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07b3638c2f5db5b479ff24c2859713d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PokeFollowTransform: {fileID: 0}
-  m_SmoothingSpeed: 16
-  m_ReturnToInitialPosition: 1
-  m_ApplyIfChildIsTarget: 1
-  m_ClampToMaxDistance: 0
-  m_MaxDistance: 6
 --- !u!1 &1334800485
 GameObject:
   m_ObjectHideFlags: 0
@@ -6470,7 +6300,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 80
+  m_text: 40
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6913,9 +6743,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: " \u041F\u043B\u043E\u0442\u043D\u043E\u0441\u0442\u044C = 15, 28 \u0433/\u0441\u043C^3\n
+  m_Text: " \u041F\u043B\u043E\u0442\u043D\u043E\u0441\u0442\u044C = 15 280 \u043A\u0433/\u0441\u043C\xB3\n
     \u0422\u0435\u043C\u043F\u0435\u0440\u0430\u0442\u0443\u0440\u0430 \u0441\u043F\u0435\u043A\u0430\u043D\u0438\u044F
-    = 1370 \uF0B0\uF0B0C\n \u0414\u0430\u0432\u043B\u0435\u043D\u0438\u044F \u0433\u0430\u0437\u0430
+    = 1370 \xB0C\n \u0414\u0430\u0432\u043B\u0435\u043D\u0438\u044F \u0433\u0430\u0437\u0430
     \u0432 \u043F\u0435\u0447\u0438 = 40  \u0430\u0442\u043C"
 --- !u!222 &1406678379
 CanvasRenderer:
@@ -7062,7 +6892,6 @@ GameObject:
   - component: {fileID: 1450588770}
   - component: {fileID: 1450588772}
   - component: {fileID: 1450588773}
-  - component: {fileID: 1450588774}
   m_Layer: 5
   m_Name: Button0
   m_TagString: Untagged
@@ -7171,24 +7000,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1450588774
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1450588767}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07b3638c2f5db5b479ff24c2859713d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PokeFollowTransform: {fileID: 0}
-  m_SmoothingSpeed: 16
-  m_ReturnToInitialPosition: 1
-  m_ApplyIfChildIsTarget: 1
-  m_ClampToMaxDistance: 0
-  m_MaxDistance: 6
 --- !u!1 &1452896272
 GameObject:
   m_ObjectHideFlags: 0
@@ -7386,21 +7197,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   valBtns:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  minusBtn: {fileID: 0}
-  commaBtn: {fileID: 0}
-  delBtn: {fileID: 0}
-  entrBtn: {fileID: 0}
-  valText: {fileID: 1883282011}
+  - {fileID: 1618265556}
+  - {fileID: 82355504}
+  - {fileID: 922189640}
+  - {fileID: 157476192}
+  - {fileID: 1273491116}
+  - {fileID: 915290227}
+  - {fileID: 640486197}
+  - {fileID: 1757646163}
+  - {fileID: 731574737}
+  - {fileID: 1786850340}
+  minusBtn: {fileID: 903712742}
+  commaBtn: {fileID: 1712552334}
+  delBtn: {fileID: 1283983893}
+  entrBtn: {fileID: 532178091}
+  valText: {fileID: 0}
   startTemp: {fileID: 1058608473}
   endTemp: {fileID: 997521015}
   time: {fileID: 645532207}
@@ -7463,7 +7274,6 @@ GameObject:
   - component: {fileID: 1521288307}
   - component: {fileID: 1521288309}
   - component: {fileID: 1521288310}
-  - component: {fileID: 1521288311}
   m_Layer: 5
   m_Name: Button8
   m_TagString: Untagged
@@ -7572,24 +7382,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1521288311
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1521288304}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07b3638c2f5db5b479ff24c2859713d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PokeFollowTransform: {fileID: 0}
-  m_SmoothingSpeed: 16
-  m_ReturnToInitialPosition: 1
-  m_ApplyIfChildIsTarget: 1
-  m_ClampToMaxDistance: 0
-  m_MaxDistance: 6
 --- !u!1 &1523167047 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9014170785475729474, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
@@ -10241,6 +10033,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2097082730694957451, guid: c4e389e44d96da64ea974ab237ce1a9a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3882486564438659329, guid: c4e389e44d96da64ea974ab237ce1a9a, type: 3}
       propertyPath: m_Layer
       value: 5
@@ -10255,6 +10051,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8187996451069544821, guid: c4e389e44d96da64ea974ab237ce1a9a, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8696474692589808570, guid: c4e389e44d96da64ea974ab237ce1a9a, type: 3}
+      propertyPath: m_enableWordWrapping
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9206652151208637124, guid: c4e389e44d96da64ea974ab237ce1a9a, type: 3}
@@ -10408,7 +10208,7 @@ MonoBehaviour:
   down:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 308032464}
+      - m_Target: {fileID: 1972877599}
         m_TargetAssemblyTypeName: EntryValuePanel, Assembly-CSharp
         m_MethodName: Open
         m_Mode: 2
@@ -11101,6 +10901,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.037
       objectReference: {fileID: 0}
+    - target: {fileID: 6200829599069447984, guid: dbe6dd718aa5f234694194e370920bee, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6200829599069447984, guid: dbe6dd718aa5f234694194e370920bee, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.12
+      objectReference: {fileID: 0}
     - target: {fileID: 6219561139790335431, guid: dbe6dd718aa5f234694194e370920bee, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -11246,17 +11054,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1648472534294035574, guid: dbe6dd718aa5f234694194e370920bee, type: 3}
   m_PrefabInstance: {fileID: 1874991480}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1883282011 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8696474692589808570, guid: c4e389e44d96da64ea974ab237ce1a9a, type: 3}
-  m_PrefabInstance: {fileID: 1788697657}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1966871514
 GameObject:
   m_ObjectHideFlags: 0
@@ -12018,7 +11815,6 @@ GameObject:
   - component: {fileID: 2018803334}
   - component: {fileID: 2018803336}
   - component: {fileID: 2018803337}
-  - component: {fileID: 2018803338}
   m_Layer: 5
   m_Name: Button6
   m_TagString: Untagged
@@ -12127,24 +11923,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2018803338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2018803331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07b3638c2f5db5b479ff24c2859713d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PokeFollowTransform: {fileID: 0}
-  m_SmoothingSpeed: 16
-  m_ReturnToInitialPosition: 1
-  m_ApplyIfChildIsTarget: 1
-  m_ClampToMaxDistance: 0
-  m_MaxDistance: 6
 --- !u!1 &2084603697
 GameObject:
   m_ObjectHideFlags: 0
@@ -12158,7 +11936,6 @@ GameObject:
   - component: {fileID: 2084603700}
   - component: {fileID: 2084603702}
   - component: {fileID: 2084603703}
-  - component: {fileID: 2084603704}
   m_Layer: 5
   m_Name: Button3
   m_TagString: Untagged
@@ -12267,24 +12044,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2084603704
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2084603697}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07b3638c2f5db5b479ff24c2859713d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PokeFollowTransform: {fileID: 0}
-  m_SmoothingSpeed: 16
-  m_ReturnToInitialPosition: 1
-  m_ApplyIfChildIsTarget: 1
-  m_ClampToMaxDistance: 0
-  m_MaxDistance: 6
 --- !u!1 &2089062530
 GameObject:
   m_ObjectHideFlags: 0
@@ -12362,7 +12121,7 @@ MonoBehaviour:
   down:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 308032464}
+      - m_Target: {fileID: 1972877599}
         m_TargetAssemblyTypeName: EntryValuePanel, Assembly-CSharp
         m_MethodName: Open
         m_Mode: 2
@@ -12458,7 +12217,6 @@ GameObject:
   - component: {fileID: 2109683049}
   - component: {fileID: 2109683051}
   - component: {fileID: 2109683052}
-  - component: {fileID: 2109683053}
   m_Layer: 5
   m_Name: Button9
   m_TagString: Untagged
@@ -12567,24 +12325,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2109683053
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2109683046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07b3638c2f5db5b479ff24c2859713d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PokeFollowTransform: {fileID: 0}
-  m_SmoothingSpeed: 16
-  m_ReturnToInitialPosition: 1
-  m_ApplyIfChildIsTarget: 1
-  m_ClampToMaxDistance: 0
-  m_MaxDistance: 6
 --- !u!1 &2128991739
 GameObject:
   m_ObjectHideFlags: 0
